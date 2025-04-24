@@ -1,0 +1,707 @@
+/* Reset CSS cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #2e2e2e;
+    color: #d0d0d0;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background-color: #3c3c3c;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: 700;
+    float: left;
+}
+
+header nav {
+    float: right;
+}
+
+header nav ul {
+    list-style: none;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #d0d0d0;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #007bff;
+}
+
+/* Hero Section */
+.hero {
+    background: url('images/hero-bg.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.qr-btn {
+    background-color: #ff4444;
+    border: none;
+    margin-left: 10px;
+}
+
+.qr-btn:hover {
+    background-color: #cc0000;
+}
+
+/* Product Section */
+.products {
+    padding: 80px 0;
+    background-color: #3c3c3c;
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    margin-left: 180px;
+}
+
+.product-card {
+    background: #4a4a4a;
+    border: 1px solid #555;
+    border-radius: 8px;
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    text-align: center;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.product-card img {
+    max-width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.product-card .content-wrapper {
+    flex: 1;
+    text-align: center;
+}
+
+.product-card h3 {
+    font-size: 16px;
+    margin: 0 0 8px 0;
+    color: #d0d0d0;
+}
+
+.product-card p {
+    font-size: 13px;
+    color: #b0b0b0;
+    margin: 0;
+}
+
+.product-card .note.hidden {
+    display: none;
+}
+
+/* Product Actions */
+.product-actions {
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+/* Copy Button */
+.copy-btn {
+    width: 25px;
+    height: 25px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.copy-btn:hover {
+    background: #0056b3;
+}
+
+/* Posts Section */
+.posts {
+    padding: 80px 0;
+    background-color: #3c3c3c;
+}
+
+.posts h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #d0d0d0;
+}
+
+/* Tab Navigation */
+.tab-nav {
+    position: fixed;
+    left: 20px;
+    top: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 150px;
+}
+
+.tab-button {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    background: #4a4a4a;
+    color: #d0d0d0;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: left;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.tab-button.active, .tab-button:hover {
+    background: #007bff;
+    color: #fff;
+}
+
+/* Tab Content */
+.tab-content {
+    margin-left: 180px;
+}
+
+/* Post Grid (Knowledge) */
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.post-card {
+    background: #4a4a4a;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.post-card h3 {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #d0d0d0;
+}
+
+.post-card p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    color: #b0b0b0;
+}
+
+.post-card .author {
+    font-size: 14px;
+    color: #007bff;
+    text-align: right;
+    font-style: italic;
+}
+
+/* Announcement Grid (Announcements) */
+.announcement-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.announcement-card {
+    background: #4a4a4a;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.announcement-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.announcement-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.announcement-header .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.announcement-header .user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.announcement-header .username {
+    font-size: 16px;
+    font-weight: 700;
+    color: #d0d0d0;
+}
+
+.announcement-header .date {
+    font-size: 12px;
+    color: #b0b0b0;
+}
+
+.announcement-card p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    color: #b0b0b0;
+}
+
+.interactions {
+    display: flex;
+    gap: 15px;
+    font-size: 14px;
+}
+
+.interactions span {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.interactions .like-btn:hover {
+    color: #ff4444;
+}
+
+.interactions .share-btn:hover {
+    color: #007bff;
+}
+
+.interactions .comment-btn:hover {
+    color: #28a745;
+}
+
+/* Full Page Sections */
+.full-page {
+    padding: 120px 0;
+    background-color: #3c3c3c;
+    min-height: 100vh;
+}
+
+/* Filter Bar (Products Page) */
+.filter-bar {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.filter-bar input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+    background-color: #4a4a4a;
+    color: #d0d0d0;
+}
+
+.filter-bar input::placeholder {
+    color: #b0b0b0;
+}
+
+/* Pagination (Products Page) */
+.pagination {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.pagination .btn {
+    margin: 0 5px;
+}
+
+/* Review Card (Reviews Page) */
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.review-card {
+    background-color: #4a4a4a;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.5s ease;
+}
+
+.review-card img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.review-card .rating {
+    color: #f1c40f;
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.review-card .author {
+    font-style: italic;
+    color: #b0b0b0;
+    margin-top: 10px;
+}
+
+/* Contact Grid (Contact Page) */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.social-block {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    width: 200px;
+    height: 60px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.social-block:hover {
+    transform: scale(1.05);
+}
+
+.social-block.github {
+    background-color: #181717;
+}
+
+.social-block.github:hover {
+    background-color: #242424;
+}
+
+.social-block.tiktok {
+    background-color: #000000;
+}
+
+.social-block.tiktok:hover {
+    background-color: #1a1a1a;
+}
+
+.social-block.telegram {
+    background-color: #0088cc;
+}
+
+.social-block.telegram:hover {
+    background-color: #0099dd;
+}
+
+.social-block i {
+    font-size: 24px;
+}
+
+.social-block span {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.contact-info, .contact-form {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.5s ease;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-form input, .contact-form textarea {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #4a4a4a;
+    color: #d0d0d0;
+}
+
+.contact-form textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+/* Footer */
+footer {
+    background-color: #2e2e2e;
+    color: #d0d0d0;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+#visit-info {
+    font-size: 14px;
+}
+
+/* CSS cho nút bút */
+.btn-icon {
+    width: 25px;
+    height: 25px;
+    background: #007bff;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.btn-icon:hover {
+    background: #0056b3;
+}
+
+/* CSS cho ô vuông nhỏ (nút mở popup) */
+.info-square {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 18px;
+    height: 18px;
+    background: #28a745;
+    color: #fff;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.info-square:hover {
+    background: #218838;
+}
+
+/* CSS cho cửa sổ popup */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    background: #4a4a4a;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    z-index: 2000;
+    padding: 20px;
+}
+
+.popup-content {
+    position: relative;
+}
+
+.popup-content h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #d0d0d0;
+}
+
+.popup-content p {
+    font-size: 14px;
+    color: #b0b0b0;
+    margin-top: 10px;
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background: #dc3545;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.close-popup:hover {
+    background: #c82333;
+}
+
+/* CSS cho overlay (lớp phủ mờ) */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1500;
+}
+
+/* Contact Page Specific Styles */
+.contact h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #d0d0d0;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 32px;
+    }
+    .hero p {
+        font-size: 16px;
+    }
+    .product-grid, .review-grid, .contact-grid, .post-grid, .announcement-grid {
+        grid-template-columns: 1fr;
+        margin-left: 0;
+    }
+    .filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .filter-bar input {
+        max-width: 100%;
+    }
+    .tab-nav {
+        position: static;
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+    }
+    .tab-button {
+        width: auto;
+        text-align: center;
+    }
+    .tab-content {
+        margin-left: 0;
+    }
+}
