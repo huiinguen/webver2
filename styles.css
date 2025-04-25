@@ -148,19 +148,12 @@ header nav ul li a:hover {
     max-width: 250px;
     height: auto;
     text-align: center;
+    cursor: pointer;
 }
 
 .product-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.product-card img {
-    max-width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 4px;
-    margin-bottom: 10px;
 }
 
 .product-card .content-wrapper {
@@ -174,32 +167,47 @@ header nav ul li a:hover {
     color: #d0d0d0;
 }
 
-.product-card p {
-    font-size: 13px;
-    color: #b0b0b0;
-    margin: 0;
-}
-
-.product-card .note.hidden {
+/* Popup Styling */
+.popup {
     display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    background: #4a4a4a;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    z-index: 2000;
+    padding: 20px;
 }
 
-/* Product Actions */
-.product-actions {
-    display: flex;
-    gap: 10px;
+.popup-content {
+    position: relative;
+}
+
+.popup-content h3 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #d0d0d0;
+}
+
+.popup-content p {
+    font-size: 14px;
+    color: #b0b0b0;
+    margin: 10px 0;
+    line-height: 1.5;
+    white-space: pre-line;
+}
+
+.close-popup {
     position: absolute;
-    bottom: 10px;
+    top: 10px;
     right: 10px;
-}
-
-/* Copy Button */
-.copy-btn {
-    width: 25px;
-    height: 25px;
-    background: #007bff;
+    width: 20px;
+    height: 20px;
+    background: #dc3545;
     color: #fff;
-    border: none;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -209,8 +217,53 @@ header nav ul li a:hover {
     transition: background 0.3s ease;
 }
 
-.copy-btn:hover {
+.close-popup:hover {
+    background: #c82333;
+}
+
+.popup-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.popup-copy-btn {
+    padding: 10px 20px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.popup-copy-btn:hover {
     background: #0056b3;
+}
+
+.popup-redirect-btn {
+    padding: 10px 20px;
+    background: #28a745;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.popup-redirect-btn:hover {
+    background: #218838;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1500;
 }
 
 /* Posts Section */
@@ -252,6 +305,23 @@ header nav ul li a:hover {
 .tab-button.active, .tab-button:hover {
     background: #007bff;
     color: #fff;
+}
+
+/* Badge Styling */
+.badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #ff4444;
+    color: #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
 }
 
 /* Tab Content */
@@ -380,6 +450,100 @@ header nav ul li a:hover {
     color: #28a745;
 }
 
+/* Time Section */
+.time {
+    padding: 120px 0;
+    background-color: #3c3c3c;
+    min-height: 100vh;
+}
+
+.time h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #d0d0d0;
+}
+
+.info-block {
+    position: relative;
+    width: 330px; /* Updated to 330px */
+    height: 150px; /* Updated to 150px */
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 40px;
+}
+
+.info-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+.flag-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.flag-image {
+    width: 330px; /* Match block width */
+    height: 150px; /* Match block height */
+    opacity: 0; /* Hidden by default */
+    object-fit: contain; /* Maintain aspect ratio without stretching */
+    transition: opacity 0.3s ease;
+}
+
+.info-block.holiday-block {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-block.holiday-block:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.info-content {
+    text-align: center;
+    padding: 10px; /* Reduced padding for smaller height */
+    position: relative;
+    z-index: 1;
+}
+
+.info-content h3 {
+    font-size: 18px; /* Reduced to fit rectangular shape */
+    color: #ffffff;
+    margin-bottom: 10px; /* Reduced margin */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.info-content p {
+    font-size: 12px; /* Reduced to fit rectangular shape */
+    color: #ffffff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.holiday-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); /* Updated to 330px */
+    gap: 30px;
+}
+
 /* Full Page Sections */
 .full-page {
     padding: 120px 0;
@@ -431,8 +595,8 @@ header nav ul li a:hover {
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
     padding: 20px;
-    opacity: 0;
-    transform: translateY(50px);
+    opacity: 1;
+    transform: translateY(0);
     transition: all 0.5s ease;
 }
 
@@ -517,8 +681,8 @@ header nav ul li a:hover {
 }
 
 .contact-info, .contact-form {
-    opacity: 0;
-    transform: translateY(50px);
+    opacity: 1;
+    transform: translateY(0);
     transition: all 0.5s ease;
 }
 
@@ -556,152 +720,4 @@ footer p {
 
 #visit-info {
     font-size: 14px;
-}
-
-/* CSS cho nút bút */
-.btn-icon {
-    width: 25px;
-    height: 25px;
-    background: #007bff;
-    color: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background 0.3s ease;
-}
-
-.btn-icon:hover {
-    background: #0056b3;
-}
-
-/* CSS cho ô vuông nhỏ (nút mở popup) */
-.info-square {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 18px;
-    height: 18px;
-    background: #28a745;
-    color: #fff;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.info-square:hover {
-    background: #218838;
-}
-
-/* CSS cho cửa sổ popup */
-.popup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 350px;
-    background: #4a4a4a;
-    border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-    z-index: 2000;
-    padding: 20px;
-}
-
-.popup-content {
-    position: relative;
-}
-
-.popup-content h3 {
-    margin-top: 0;
-    font-size: 18px;
-    color: #d0d0d0;
-}
-
-.popup-content p {
-    font-size: 14px;
-    color: #b0b0b0;
-    margin-top: 10px;
-}
-
-.close-popup {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 20px;
-    height: 20px;
-    background: #dc3545;
-    color: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.close-popup:hover {
-    background: #c82333;
-}
-
-/* CSS cho overlay (lớp phủ mờ) */
-.overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1500;
-}
-
-/* Contact Page Specific Styles */
-.contact h2 {
-    text-align: center;
-    font-size: 32px;
-    margin-bottom: 40px;
-    color: #d0d0d0;
-}
-
-/* Media Queries */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 32px;
-    }
-    .hero p {
-        font-size: 16px;
-    }
-    .product-grid, .review-grid, .contact-grid, .post-grid, .announcement-grid {
-        grid-template-columns: 1fr;
-        margin-left: 0;
-    }
-    .filter-bar {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    .filter-bar input {
-        max-width: 100%;
-    }
-    .tab-nav {
-        position: static;
-        flex-direction: row;
-        width: 100%;
-        justify-content: center;
-    }
-    .tab-button {
-        width: auto;
-        text-align: center;
-    }
-    .tab-content {
-        margin-left: 0;
-    }
 }
