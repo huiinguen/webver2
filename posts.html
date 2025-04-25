@@ -15,8 +15,9 @@
             <nav>
                 <ul>
                     <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="products.html" class="nav-link">Product</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
                     <li><a href="posts.html" class="nav-link">Blog</a></li>
+                    <li><a href="time.html" class="nav-link">Time</a></li>
                     <li><a href="contact.html" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
@@ -26,54 +27,53 @@
     <!-- Posts Section -->
     <section class="posts full-page">
         <div class="container">
-            <h2>Kiến Thức & Cập Nhật</h2>
+            <h2>Knowledge & Updates</h2>
             <!-- Tab Navigation -->
             <div class="tab-nav">
-                <button class="tab-button active" data-tab="knowledge">Kiến Thức</button>
-                <button class="tab-button" data-tab="announcements">Thông Báo</button>
+                <button class="tab-button active" data-tab="knowledge">Knowledge <span class="badge" id="knowledge-badge">3</span></button>
+                <button class="tab-button" data-tab="announcements">Announcements <span class="badge" id="announcements-badge">1</span></button>
             </div>
             <!-- Tab Content -->
             <div class="tab-content" id="knowledge">
                 <div class="post-grid">
-                    <!-- Bài viết Kiến Thức 1 -->
+                    <!-- Knowledge Post 1 -->
                     <div class="post-card">
-                        <h3>Cách Tối Ưu Hóa Workflow Làm Việc</h3>
-                        <p>Việc tối ưu hóa workflow có thể giúp bạn tăng năng suất đáng kể. Một số mẹo bao gồm: sử dụng công cụ quản lý thời gian như Trello hoặc Notion, đặt mục tiêu hàng ngày, và loại bỏ các yếu tố gây xao nhãng. Hãy thử áp dụng phương pháp Pomodoro để tập trung tốt hơn.</p>
-                        <p class="author">@MyShopAdmin</p>
+                        <h3>How to Optimize Your Workflow</h3>
+                        <p>Optimizing your workflow can significantly boost productivity. Some tips include: using time management tools like Trello or Notion, setting daily goals, and eliminating distractions. Try the Pomodoro technique for better focus.</p>
+                        <p class="author">@huiinguen</p>
                     </div>
-                    <!-- Bài viết Kiến Thức 2 -->
+                    <!-- Knowledge Post 2 -->
                     <div class="post-card">
-                        <h3>Mẹo Sử Dụng Python Hiệu Quả</h3>
-                        <p>Python là một ngôn ngữ lập trình mạnh mẽ và dễ học. Để viết code hiệu quả, hãy sử dụng list comprehension thay cho vòng lặp khi có thể, tận dụng thư viện như Pandas cho dữ liệu lớn, và luôn viết tài liệu cho code của bạn.</p>
-                        <p class="author">@MyShopAdmin</p>
+                        <h3>Tips for Effective Python Programming</h3>
+                        <p>Python is a powerful and easy-to-learn programming language. To write efficient code, use list comprehensions instead of loops when possible, leverage libraries like Pandas for large datasets, and always document your code.</p>
+                        <p class="author">@huiinguen</p>
                     </div>
-                    <!-- Bài viết Kiến Thức 3 -->
+                    <!-- Knowledge Post 3 -->
                     <div class="post-card">
-                        <h3>Tại Sao Nên Dùng Công Cụ Backup</h3>
-                        <p>Backup dữ liệu là bước quan trọng để bảo vệ thông tin của bạn. Các công cụ như Google Drive, Dropbox hoặc script Python tự động có thể giúp bạn lưu trữ dữ liệu an toàn. Đừng quên kiểm tra bản sao lưu định kỳ!</p>
-                        <p class="author">@MyShopAdmin</p>
+                        <h3>Why You Should Use Backup Tools</h3>
+                        <p>Backing up data is crucial for protecting your information. Tools like Google Drive, Dropbox, or automated Python scripts can help you store data safely. Don’t forget to periodically check your backups!</p>
+                        <p class="author">@huiinguen</p>
                     </div>
                 </div>
             </div>
             <div class="tab-content" id="announcements" style="display: none;">
                 <div class="announcement-grid">
-                    <!-- Thông Báo 1 -->
+                    <!-- Announcement 1 -->
                     <div class="announcement-card">
                         <div class="announcement-header">
                             <img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&auto=format&fit=crop&w=40&h=40&q=80" alt="Avatar" class="avatar">
                             <div class="user-info">
-                                <span class="username">@MyShopAdmin</span>
+                                <span class="username">@huiinguen</span>
                                 <span class="date">24/04/2025</span>
                             </div>
                         </div>
-                        <p>Cập nhật mới: web nâng cấp giao diện và các mẹo hay</p>
+                        <p>Website launch</p>
                         <div class="interactions">
                             <span class="like-btn" data-likes="0">❤️ 0</span>
                             <span class="share-btn">↪️ Share</span>
                             <span class="comment-btn">💬 Comment</span>
                         </div>
                     </div>
-                    <!-- Thông Báo 2 -->
                 </div>
             </div>
         </div>
