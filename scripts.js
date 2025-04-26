@@ -1,140 +1,53 @@
 document.addEventListener("DOMContentLoaded", () => {
     console.log("scripts.js loaded");
 
-    // Define productGrid once at the top
-    const productGrid = document.querySelector('.product-grid');
+    // Mobile Navigation Toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('header nav');
 
-    // Info Block Popup (Holiday Blocks Only)
-    const holidayBlocks = document.querySelectorAll('.info-block.holiday-block');
-    const popup = document.getElementById('info-popup');
-    const overlay = document.getElementById('overlay');
-    const closePopup = document.getElementById('close-popup');
-    const popupTitle = document.getElementById('popup-title');
-    const popupNote = document.getElementById('popup-note');
-
-    if (holidayBlocks.length > 0 && popup && overlay && closePopup && popupTitle && popupNote) {
-        console.log("Holiday blocks and popup elements found");
-        holidayBlocks.forEach(block => {
-            block.addEventListener('click', () => {
-                console.log("Holiday block clicked:", block.getAttribute('data-title'));
-                const title = block.getAttribute('data-title');
-                const note = block.getAttribute('data-note');
-
-                popupTitle.textContent = title;
-                popupNote.innerHTML = note;
-
-                popup.style.display = 'block';
-                overlay.style.display = 'block';
-
-                // GSAP animation for popup
-                if (typeof gsap !== 'undefined') {
-                    gsap.fromTo(popup, 
-                        { scale: 0.8, opacity: 0 },
-                        { scale: 1, opacity: 1, duration: 0.3, ease: "power2.out" }
-                    );
-                }
-
-                // Vietnamese Flag Animation
-                const flag = block.querySelector('.flag-image');
-                if (flag && typeof gsap !== 'undefined') {
-                    gsap.fromTo(flag, 
-                        { scale: 0.9, opacity: 0 },
-                        { scale: 1, opacity: 0.8, duration: 0.8, ease: "power3.out" } // Slower fade-in
-                    );
-                    gsap.to(flag, 
-                        { opacity: 0, duration: 0.8, delay: 2, ease: "power3.in" } // Slower fade-out
-                    );
-                } else if (flag) {
-                    flag.style.opacity = 0.8;
-                    setTimeout(() => {
-                        flag.style.opacity = 0;
-                    }, 2000);
-                }
-            });
+    if (navToggle && nav) {
+        navToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
         });
-
-        // Close popup
-        closePopup.addEventListener('click', () => {
-            console.log("Closing popup");
-            if (typeof gsap !== 'undefined') {
-                gsap.to(popup, {
-                    scale: 0.8,
-                    opacity: 0,
-                    duration: 0.3,
-                    ease: "power2.in",
-                    onComplete: () => {
-                        popup.style.display = 'none';
-                        overlay.style.display = 'none';
-                    }
-                });
-            } else {
-                popup.style.display = 'none';
-                overlay.style.display = 'none';
-            }
-        });
-
-        overlay.addEventListener('click', () => {
-            console.log("Overlay clicked, closing popup");
-            if (typeof gsap !== 'undefined') {
-                gsap.to(popup, {
-                    scale: 0.8,
-                    opacity: 0,
-                    duration: 0.3,
-                    ease: "power2.in",
-                    onComplete: () => {
-                        popup.style.display = 'none';
-                        overlay.style.display = 'none';
-                    }
-                });
-            } else {
-                popup.style.display = 'none';
-                overlay.style.display = 'none';
-            }
-        });
-    } else {
-        console.error("Holiday blocks or popup elements not found");
     }
 
-    // Animation for Info Blocks
+    // GSAP Animations for Split Slides (index.html)
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        console.log("GSAP and ScrollTrigger loaded, applying animations");
-        gsap.utils.toArray(".info-block").forEach(element => {
-            gsap.to(element, {
-                opacity: 1,
-                y: 0,
+        gsap.utils.toArray(".split-slide").forEach(slide => {
+            const image = slide.querySelector('.split-slide-image');
+            const content = slide.querySelector('.split-slide-content');
+
+            // Animate image (slide in from left)
+            gsap.from(image, {
+                x: -100,
+                opacity: 0,
                 duration: 1,
+                ease: "power2.out",
                 scrollTrigger: {
-                    trigger: element,
+                    trigger: slide,
                     start: "top 80%",
+                    toggleActions: "play none none reset"
                 }
             });
-        });
-    } else {
-        console.warn("GSAP or ScrollTrigger not loaded, skipping animations");
-        document.querySelectorAll(".info-block").forEach(element => {
-            element.style.opacity = 1;
-            element.style.transform = 'translateY(0)';
-        });
-    }
 
-    // Animation cho Review Cards (Trang Review)
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        gsap.utils.toArray(".review-card").forEach(card => {
-            gsap.to(card, {
-                opacity: 1,
-                y: 0,
+            // Animate content (slide in from right)
+            gsap.from(content, {
+                x: 100,
+                opacity: 0,
                 duration: 1,
+                ease: "power2.out",
                 scrollTrigger: {
-                    trigger: card,
+                    trigger: slide,
                     start: "top 80%",
+                    toggleActions: "play none none reset"
                 }
             });
         });
     }
 
-    // Animation cho Contact Info và Form (Trang Contact)
+    // Animation cho Social Links (contact.html)
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        gsap.utils.toArray(".social-links, .contact-form").forEach(element => {
+        gsap.utils.toArray(".social-links").forEach(element => {
             gsap.to(element, {
                 opacity: 1,
                 y: 0,
@@ -161,16 +74,15 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Tìm kiếm sản phẩm (Trang Products)
+    // Tìm kiếm sản phẩm (products.html)
     const searchInput = document.querySelector('#search');
+    const productGrid = document.querySelector('.product-grid');
     const productCards = document.querySelectorAll('.product-card');
 
     if (searchInput && productGrid) {
         console.log("Search input and product grid found");
         searchInput.addEventListener('input', (e) => {
             const searchText = e.target.value.toLowerCase();
-
-            // Lưu trữ các thẻ hiển thị
             const visibleCards = [];
 
             productCards.forEach(card => {
@@ -183,15 +95,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
 
-            // Sắp xếp lại lưới
             productGrid.innerHTML = '';
             visibleCards.forEach(card => productGrid.appendChild(card));
         });
-    } else {
-        console.warn("Search input or product grid not found");
     }
 
-    // Tab Switching (Products Page)
+    // Tab Switching (products.html)
     const productTabButtons = document.querySelectorAll('.products .tab-button');
     if (productTabButtons.length > 0 && productGrid) {
         console.log("Product tab buttons and product grid found");
@@ -199,12 +108,9 @@ document.addEventListener("DOMContentLoaded", () => {
             button.addEventListener('click', () => {
                 const tabId = button.getAttribute('data-tab');
 
-                // Remove active class from all buttons
                 productTabButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
                 button.classList.add('active');
 
-                // Filter products
                 const visibleCards = [];
                 productCards.forEach(card => {
                     const cardCategory = card.getAttribute('data-category');
@@ -216,21 +122,17 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
 
-                // Sắp xếp lại lưới
                 productGrid.innerHTML = '';
                 visibleCards.forEach(card => productGrid.appendChild(card));
 
-                // Hiệu ứng GSAP
                 if (typeof gsap !== 'undefined') {
                     gsap.fromTo(productGrid, { opacity: 0 }, { opacity: 1, duration: 0.3 });
                 }
             });
         });
-    } else {
-        console.warn("Product tab buttons or product grid not found");
     }
 
-    // Product Card Popup (Trang Products)
+    // Product Card Popup (products.html)
     const productPopup = document.getElementById('product-popup');
     const productOverlay = document.getElementById('overlay');
     const productClosePopup = document.getElementById('close-popup');
@@ -256,7 +158,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 productPopup.style.display = 'block';
                 productOverlay.style.display = 'block';
 
-                // GSAP animation for popup
                 if (typeof gsap !== 'undefined') {
                     gsap.fromTo(productPopup, 
                         { scale: 0.8, opacity: 0 },
@@ -266,7 +167,6 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        // Copy button in popup
         popupCopyBtn.addEventListener('click', () => {
             const link = popupCopyBtn.getAttribute('data-link');
             navigator.clipboard.writeText(link).then(() => {
@@ -277,7 +177,6 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        // Close popup
         productClosePopup.addEventListener('click', () => {
             console.log("Closing product popup");
             if (typeof gsap !== 'undefined') {
@@ -315,17 +214,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 productOverlay.style.display = 'none';
             }
         });
-    } else {
-        console.warn("Product cards or popup elements not found");
     }
 
-    // Tab Switching (Blog Page)
+    // Tab Switching (posts.html)
     const postTabButtons = document.querySelectorAll('.posts .tab-button');
     const tabContents = document.querySelectorAll('.tab-content');
 
     if (postTabButtons.length > 0) {
         console.log("Post tab buttons found");
-        // Update badge counts dynamically
         const knowledgePosts = document.querySelectorAll('#knowledge .post-card').length;
         const announcements = document.querySelectorAll('#announcements .announcement-card').length;
 
@@ -336,12 +232,9 @@ document.addEventListener("DOMContentLoaded", () => {
             button.addEventListener('click', () => {
                 const tabId = button.getAttribute('data-tab');
 
-                // Remove active class from all buttons
                 postTabButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
                 button.classList.add('active');
 
-                // Hide all tab contents
                 tabContents.forEach(content => {
                     content.style.display = 'none';
                     if (typeof gsap !== 'undefined') {
@@ -349,7 +242,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
 
-                // Show selected tab content
                 const activeContent = document.getElementById(tabId);
                 activeContent.style.display = 'block';
                 if (typeof gsap !== 'undefined') {
@@ -357,11 +249,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
         });
-    } else {
-        console.warn("Post tab buttons not found");
     }
 
-    // Like Button Interaction
+    // Like Button Interaction (posts.html)
     const likeButtons = document.querySelectorAll('.like-btn');
     likeButtons.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -374,11 +264,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Share Button Interaction
+    // Share Button Interaction (posts.html)
     const shareButtons = document.querySelectorAll('.share-btn');
     shareButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Placeholder: Copy current page URL to clipboard
             navigator.clipboard.writeText(window.location.href).then(() => {
                 alert('Link copied to clipboard!');
             });
@@ -388,7 +277,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Comment Button Interaction (Placeholder)
+    // Comment Button Interaction (posts.html)
     const commentButtons = document.querySelectorAll('.comment-btn');
     commentButtons.forEach(btn => {
         btn.addEventListener('click', () => {
