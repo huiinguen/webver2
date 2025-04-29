@@ -1,292 +1,219 @@
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("scripts.js loaded");
+    // Xử lý active cho thanh điều hướng
+    const navLinks = document.querySelectorAll('.nav-link');
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
-    // Mobile Navigation Toggle
-    const navToggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('header nav');
-
-    if (navToggle && nav) {
-        navToggle.addEventListener('click', () => {
-            nav.classList.toggle('active');
-        });
-    }
-
-    // GSAP Animations for Split Slides (index.html)
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        gsap.utils.toArray(".split-slide").forEach(slide => {
-            const image = slide.querySelector('.split-slide-image');
-            const content = slide.querySelector('.split-slide-content');
-
-            // Animate image (slide in from left)
-            gsap.from(image, {
-                x: -100,
-                opacity: 0,
-                duration: 1,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: slide,
-                    start: "top 80%",
-                    toggleActions: "play none none reset"
-                }
-            });
-
-            // Animate content (slide in from right)
-            gsap.from(content, {
-                x: 100,
-                opacity: 0,
-                duration: 1,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: slide,
-                    start: "top 80%",
-                    toggleActions: "play none none reset"
-                }
-            });
-        });
-    }
-
-    // Animation cho Social Links (contact.html)
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-        gsap.utils.toArray(".social-links").forEach(element => {
-            gsap.to(element, {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                scrollTrigger: {
-                    trigger: element,
-                    start: "top 80%",
-                }
-            });
-        });
-    }
-
-    // Hover effect cho tất cả nút
-    document.querySelectorAll('.btn').forEach(btn => {
-        btn.addEventListener('mouseover', () => {
-            if (typeof gsap !== 'undefined') {
-                gsap.to(btn, { scale: 1.1, duration: 0.3 });
-            }
-        });
-        btn.addEventListener('mouseout', () => {
-            if (typeof gsap !== 'undefined') {
-                gsap.to(btn, { scale: 1, duration: 0.3 });
-            }
-        });
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === currentPage) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
     });
 
-    // Tìm kiếm sản phẩm (products.html)
-    const searchInput = document.querySelector('#search');
-    const productGrid = document.querySelector('.product-grid');
-    const productCards = document.querySelectorAll('.product-card');
+    // Three.js setup for 3D blocks in index.html
+    const canvas = document.querySelector('#three-canvas');
+    if (canvas) {
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+        renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
 
-    if (searchInput && productGrid) {
-        console.log("Search input and product grid found");
-        searchInput.addEventListener('input', (e) => {
-            const searchText = e.target.value.toLowerCase();
-            const visibleCards = [];
+        // Resize canvas on window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = canvas.clientWidth / canvas.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+        });
 
-            productCards.forEach(card => {
-                const productName = card.querySelector('h3').textContent.toLowerCase();
-                if (productName.includes(searchText)) {
-                    card.style.display = 'flex';
-                    visibleCards.push(card);
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+        const pointLight = new THREE.PointLight(0xffffff, 1);
+        pointLight.position.set(10, 10, 10);
+        scene.add(pointLight);
+
+        // Create cubes
+        const cubes = [];
+        const cubeCount = 50;
+        const cubeSize = 0.7;
+        const cubeGeometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
+
+        for (let i = 0; i < cubeCount; i++) {
+            const material = new THREE.MeshPhongMaterial({
+                color: new THREE.Color(`hsl(${Math.random() * 360}, 70%, 50%)`),
+                shininess: 100
+            });
+            const cube = new THREE.Mesh(cubeGeometry, material);
+            cube.position.set(
+                (Math.random() - 0.5) * 15,
+                (Math.random() - 0.5) * 15,
+                (Math.random() - 0.5) * 15
+            );
+            cube.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
+            scene.add(cube);
+            cubes.push(cube);
+        }
+
+        // Target positions for sphere
+        const radius = 3;
+        const targetPositions = [];
+        for (let i = 0; i < cubeCount; i++) {
+            const phi = Math.acos(-1 + (2 * i) / cubeCount);
+            const theta = Math.sqrt(cubeCount * Math.PI) * phi;
+            const x = radius * Math.cos(theta) * Math.sin(phi);
+            const y = radius * Math.sin(theta) * Math.sin(phi);
+            const z = radius * Math.cos(phi);
+            targetPositions.push([x, y, z]);
+        }
+
+        // Animation
+        let time = 0;
+        function animate() {
+            requestAnimationFrame(animate);
+            time += 0.02;
+
+            cubes.forEach((cube, i) => {
+                if (time < 7) {
+                    // Move to sphere positions
+                    const target = targetPositions[i % targetPositions.length];
+                    cube.position.lerp(new THREE.Vector3(...target), 0.05);
+                    cube.rotation.x += 0.02;
+                    cube.rotation.y += 0.02;
                 } else {
-                    card.style.display = 'none';
+                    // Rotate the sphere
+                    cube.position.applyAxisAngle(new THREE.Vector3(0, 1, 0), 0.01);
+                    cube.rotation.x += 0.01;
+                    cube.rotation.y += 0.01;
+                    // Change color dynamically
+                    cube.material.color.setHSL((Math.sin(time * 0.1 + i) + 1) / 2, 0.7, 0.5);
                 }
             });
 
-            productGrid.innerHTML = '';
-            visibleCards.forEach(card => productGrid.appendChild(card));
-        });
+            camera.position.z = 10;
+            renderer.render(scene, camera);
+        }
+        animate();
     }
 
-    // Tab Switching (products.html)
-    const productTabButtons = document.querySelectorAll('.products .tab-button');
-    if (productTabButtons.length > 0 && productGrid) {
-        console.log("Product tab buttons and product grid found");
-        productTabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const tabId = button.getAttribute('data-tab');
+    // Tab functionality for products
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const productCards = document.querySelectorAll('.product-card');
+    const searchInput = document.querySelector('#search');
 
-                productTabButtons.forEach(btn => btn.classList.remove('active'));
+    if (tabButtons.length > 0) {
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                tabButtons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
 
-                const visibleCards = [];
+                const tab = button.getAttribute('data-tab');
                 productCards.forEach(card => {
-                    const cardCategory = card.getAttribute('data-category');
-                    if (tabId === 'all' || cardCategory === tabId) {
-                        card.style.display = 'flex';
-                        visibleCards.push(card);
+                    const category = card.getAttribute('data-category');
+                    if (tab === 'all' || tab === category) {
+                        card.style.display = 'block';
                     } else {
                         card.style.display = 'none';
                     }
                 });
+            });
+        });
+    }
 
-                productGrid.innerHTML = '';
-                visibleCards.forEach(card => productGrid.appendChild(card));
-
-                if (typeof gsap !== 'undefined') {
-                    gsap.fromTo(productGrid, { opacity: 0 }, { opacity: 1, duration: 0.3 });
+    if (searchInput) {
+        searchInput.addEventListener('input', () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            productCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                if (title.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
                 }
             });
         });
     }
 
-    // Product Card Popup (products.html)
-    const productPopup = document.getElementById('product-popup');
-    const productOverlay = document.getElementById('overlay');
-    const productClosePopup = document.getElementById('close-popup');
-    const popupTitleProduct = document.getElementById('popup-title');
-    const popupNoteProduct = document.getElementById('popup-note');
-    const popupCopyBtn = document.getElementById('popup-copy');
-    const popupRedirectBtn = document.getElementById('popup-redirect');
+    // Popup functionality
+    const popup = document.querySelector('#product-popup');
+    const popupTitle = document.querySelector('#popup-title');
+    const popupNote = document.querySelector('#popup-note');
+    const popupRedirect = document.querySelector('#popup-redirect');
+    const popupCopy = document.querySelector('#popup-copy');
+    const closePopup = document.querySelector('#close-popup');
+    const overlay = document.querySelector('#overlay');
 
-    if (productCards.length > 0 && productPopup && productOverlay && productClosePopup && popupTitleProduct && popupNoteProduct) {
-        console.log("Product cards and popup elements found");
+    if (productCards.length > 0) {
         productCards.forEach(card => {
             card.addEventListener('click', () => {
-                console.log("Product card clicked:", card.querySelector('h3').textContent);
-                const title = card.querySelector('h3').textContent;
-                const note = card.getAttribute('data-note');
-                const link = card.getAttribute('data-link');
-
-                popupTitleProduct.textContent = title;
-                popupNoteProduct.textContent = note;
-                popupCopyBtn.setAttribute('data-link', link);
-                popupRedirectBtn.setAttribute('href', link);
-
-                productPopup.style.display = 'block';
-                productOverlay.style.display = 'block';
-
-                if (typeof gsap !== 'undefined') {
-                    gsap.fromTo(productPopup, 
-                        { scale: 0.8, opacity: 0 },
-                        { scale: 1, opacity: 1, duration: 0.3, ease: "power2.out" }
-                    );
-                }
+                popupTitle.textContent = card.querySelector('h3').textContent;
+                popupNote.textContent = card.getAttribute('data-note');
+                popupRedirect.setAttribute('href', card.getAttribute('data-link'));
+                popup.style.display = 'block';
+                overlay.style.display = 'block';
             });
-        });
-
-        popupCopyBtn.addEventListener('click', () => {
-            const link = popupCopyBtn.getAttribute('data-link');
-            navigator.clipboard.writeText(link).then(() => {
-                alert('Link copied to clipboard!');
-                if (typeof gsap !== 'undefined') {
-                    gsap.fromTo(popupCopyBtn, { scale: 1.2 }, { scale: 1, duration: 0.3 });
-                }
-            });
-        });
-
-        productClosePopup.addEventListener('click', () => {
-            console.log("Closing product popup");
-            if (typeof gsap !== 'undefined') {
-                gsap.to(productPopup, {
-                    scale: 0.8,
-                    opacity: 0,
-                    duration: 0.3,
-                    ease: "power2.in",
-                    onComplete: () => {
-                        productPopup.style.display = 'none';
-                        productOverlay.style.display = 'none';
-                    }
-                });
-            } else {
-                productPopup.style.display = 'none';
-                productOverlay.style.display = 'none';
-            }
-        });
-
-        productOverlay.addEventListener('click', () => {
-            console.log("Product overlay clicked, closing popup");
-            if (typeof gsap !== 'undefined') {
-                gsap.to(productPopup, {
-                    scale: 0.8,
-                    opacity: 0,
-                    duration: 0.3,
-                    ease: "power2.in",
-                    onComplete: () => {
-                        productPopup.style.display = 'none';
-                        productOverlay.style.display = 'none';
-                    }
-                });
-            } else {
-                productPopup.style.display = 'none';
-                productOverlay.style.display = 'none';
-            }
         });
     }
 
-    // Tab Switching (posts.html)
+    if (popupCopy) {
+        popupCopy.addEventListener('click', () => {
+            const link = popupRedirect.getAttribute('href');
+            navigator.clipboard.writeText(link).then(() => {
+                popupCopy.textContent = '✅ Copied!';
+                setTimeout(() => {
+                    popupCopy.textContent = '📋 Copy Link';
+                }, 2000);
+            });
+        });
+    }
+
+    if (closePopup && overlay) {
+        closePopup.addEventListener('click', () => {
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        });
+
+        overlay.addEventListener('click', () => {
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        });
+    }
+
+    // Tab functionality for posts
     const postTabButtons = document.querySelectorAll('.posts .tab-button');
     const tabContents = document.querySelectorAll('.tab-content');
+    const knowledgeBadge = document.querySelector('#knowledge-badge');
+    const announcementsBadge = document.querySelector('#announcements-badge');
+    const workBadge = document.querySelector('#work-badge');
 
     if (postTabButtons.length > 0) {
-        console.log("Post tab buttons found");
-        const knowledgePosts = document.querySelectorAll('#knowledge .post-card').length;
-        const announcements = document.querySelectorAll('#announcements .announcement-card').length;
-        const workPosts = document.querySelectorAll('#work .work-card').length;
-
-        document.getElementById('knowledge-badge').textContent = knowledgePosts;
-        document.getElementById('announcements-badge').textContent = announcements;
-        document.getElementById('work-badge').textContent = workPosts;
-
         postTabButtons.forEach(button => {
             button.addEventListener('click', () => {
-                const tabId = button.getAttribute('data-tab');
-
                 postTabButtons.forEach(btn => btn.classList.remove('active'));
                 button.classList.add('active');
 
+                const tab = button.getAttribute('data-tab');
                 tabContents.forEach(content => {
-                    content.style.display = 'none';
-                    if (typeof gsap !== 'undefined') {
-                        gsap.to(content, { opacity: 0, duration: 0.3 });
-                    }
+                    content.style.display = content.id === tab ? 'block' : 'none';
                 });
-
-                const activeContent = document.getElementById(tabId);
-                activeContent.style.display = 'block';
-                if (typeof gsap !== 'undefined') {
-                    gsap.to(activeContent, { opacity: 1, duration: 0.3 });
-                }
             });
         });
+
+        // Update badge counts
+        knowledgeBadge.textContent = document.querySelectorAll('#knowledge .post-card').length;
+        announcementsBadge.textContent = document.querySelectorAll('#announcements .announcement-card').length;
+        workBadge.textContent = document.querySelectorAll('#work .work-card').length;
     }
 
-    // Like Button Interaction (posts.html)
+    // Like button functionality
     const likeButtons = document.querySelectorAll('.like-btn');
-    likeButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            let likes = parseInt(btn.getAttribute('data-likes')) + 1;
-            btn.setAttribute('data-likes', likes);
-            btn.textContent = `❤️ ${likes}`;
-            if (typeof gsap !== 'undefined') {
-                gsap.fromTo(btn, { scale: 1.2 }, { scale: 1, duration: 0.3 });
-            }
-        });
-    });
-
-    // Share Button Interaction (posts.html)
-    const shareButtons = document.querySelectorAll('.share-btn');
-    shareButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            navigator.clipboard.writeText(window.location.href).then(() => {
-                alert('Link copied to clipboard!');
-            });
-            if (typeof gsap !== 'undefined') {
-                gsap.fromTo(btn, { scale: 1.2 }, { scale: 1, duration: 0.3 });
-            }
-        });
-    });
-
-    // Comment Button Interaction (posts.html)
-    const commentButtons = document.querySelectorAll('.comment-btn');
-    commentButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            alert('Comment feature coming soon!');
-            if (typeof gsap !== 'undefined') {
-                gsap.fromTo(btn, { scale: 1.2 }, { scale: 1, duration: 0.3 });
-            }
+    likeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            let likes = parseInt(button.getAttribute('data-likes')) + 1;
+            button.setAttribute('data-likes', likes);
+            button.textContent = `❤️ ${likes}`;
         });
     });
 });
