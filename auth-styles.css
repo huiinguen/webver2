@@ -1,0 +1,180 @@
+/* Trang Đăng Nhập */
+.login {
+    padding: 5vh 0;
+    background: linear-gradient(135deg, #2c2c2c 0%, #3c3c3c 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    background: #4a4a4a;
+    border-radius: 12px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    position: relative;
+}
+
+.login-container .logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #007bff;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.login-container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: #d0d0d0;
+    font-weight: 700;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.login-form select,
+.login-form input {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #666;
+    border-radius: 8px;
+    background-color: #5e5e5e;
+    color: #d0d0d0;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-form select:focus,
+.login-form input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+.login-form button {
+    padding: 0.8rem;
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4);
+}
+
+.error-message {
+    color: #ff4444;
+    font-size: 0.875rem;
+    text-align: center;
+    display: none;
+    margin-top: 0.5rem;
+}
+
+/* Trang Bảo Mật */
+.security-info {
+    background: #4a4a4a;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.security-info p {
+    font-size: 1rem;
+    color: #b0b0b0;
+    margin-bottom: 10px;
+}
+
+.security-info p span {
+    color: #d0d0d0;
+    font-weight: 700;
+}
+
+.security-info button {
+    margin-top: 15px;
+}
+
+/* Responsive cho điện thoại */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 1.5rem;
+        max-width: 90%;
+        margin: 0 1rem;
+    }
+
+    .login-container .logo {
+        font-size: 1.5rem;
+    }
+
+    .login-container h2 {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+
+    .login-form select,
+    .login-form input,
+    .login-form button {
+        font-size: 0.9rem;
+        padding: 0.7rem;
+    }
+
+    .login-form button {
+        font-size: 0.9rem;
+    }
+
+    .error-message {
+        font-size: 0.8rem;
+    }
+
+    .security-info {
+        padding: 1rem;
+    }
+
+    .security-info p {
+        font-size: 0.9rem;
+    }
+
+    .security-info button {
+        font-size: 0.9rem;
+        padding: 0.7rem;
+    }
+}
+
+/* Tương thích với màn hình nhỏ hơn (dưới 360px) */
+@media (max-width: 360px) {
+    .login-container {
+        padding: 1rem;
+    }
+
+    .login-container .logo {
+        font-size: 1.2rem;
+    }
+
+    .login-container h2 {
+        font-size: 1.2rem;
+    }
+
+    .login-form select,
+    .login-form input,
+    .login-form button {
+        font-size: 0.85rem;
+        padding: 0.6rem;
+    }
+
+    .error-message {
+        font-size: 0.75rem;
+    }
+}
