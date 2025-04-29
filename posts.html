@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bài Viết - MyShop</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="auth-styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -18,6 +19,7 @@
                     <li><a href="products.html" class="nav-link">Products</a></li>
                     <li><a href="posts.html" class="nav-link">Blog</a></li>
                     <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="security.html" class="nav-link">Security</a></li>
                 </ul>
             </nav>
         </div>
@@ -26,11 +28,11 @@
     <!-- Posts Section -->
     <section class="posts full-page">
         <div class="container">
-            <h2>Kiến Thức & Thông Báo</h2>
             <!-- Tab Navigation -->
             <div class="tab-nav">
                 <button class="tab-button active" data-tab="knowledge">Kiến Thức <span class="badge" id="knowledge-badge">0</span></button>
                 <button class="tab-button" data-tab="announcements">Thông Báo <span class="badge" id="announcements-badge">0</span></button>
+                <button class="tab-button" data-tab="work">Work <span class="badge" id="work-badge">0</span></button>
             </div>
             <!-- Tab Content -->
             <div class="tab-content" id="knowledge">
@@ -77,19 +79,19 @@
                         <p><b>Docker</b> là công cụ tạo môi trường ảo hóa nhẹ (container) để chạy ứng dụng nhất quán trên mọi hệ thống. Với lập trình viên, Docker giúp: <b>đồng bộ môi trường</b> giữa phát triển và sản xuất, giảm lỗi "chạy trên máy tôi thì được"; <b>triển khai nhanh</b> bằng cách đóng gói ứng dụng với các phụ thuộc; và <b>tiết kiệm tài nguyên</b> so với máy ảo truyền thống. Để bắt đầu, cài đặt Docker Desktop và thử chạy một container đơn giản với lệnh: <i>docker run -it ubuntu bash</i>.</p>
                         <p class="author">@huiinguen</p>
                     </div>
-                    <!-- New Knowledge Post 8: Advanced Software -->
+                    <!-- Knowledge Post 8: Advanced Software -->
                     <div class="post-card">
                         <h3>Làm thế nào để bảo mật ứng dụng web với HTTPS?</h3>
                         <p>Bảo mật ứng dụng web bằng <b>HTTPS</b> là bước quan trọng để bảo vệ dữ liệu người dùng. Sử dụng chứng chỉ SSL/TLS miễn phí từ <b>Let's Encrypt</b> hoặc các nhà cung cấp như <b>Cloudflare</b>. Để triển khai, cấu hình máy chủ web (như <i>Nginx</i> hoặc <i>Apache</i>) để chuyển hướng tất cả lưu lượng HTTP sang HTTPS. Đảm bảo sử dụng <b>HSTS</b> (HTTP Strict Transport Security) để ép trình duyệt luôn dùng HTTPS. Kiểm tra cấu hình SSL bằng công cụ như <i>SSL Labs</i> để đảm bảo an toàn tối đa.</p>
                         <p class="author">@huiinguen</p>
                     </div>
-                    <!-- New Knowledge Post 9: Advanced Hardware -->
+                    <!-- Knowledge Post 9: Advanced Hardware -->
                     <div class="post-card">
                         <h3>Cách chọn nguồn (PSU) phù hợp cho PC của bạn?</h3>
                         <p>Nguồn máy tính (<b>PSU</b>) là yếu tố quan trọng để đảm bảo hệ thống hoạt động ổn định. Khi chọn PSU, hãy tính tổng công suất tiêu thụ của các linh kiện (CPU, GPU, RAM, ổ cứng) bằng công cụ như <b>PCPartPicker</b>. Chọn nguồn có công suất cao hơn 20-30% so với nhu cầu để đảm bảo hiệu quả và độ bền. Ưu tiên các thương hiệu uy tín như <i>Corsair</i>, <i>Seasonic</i>, hoặc <i>EVGA</i> và kiểm tra chứng nhận <b>80 Plus</b> (Bronze, Gold, Platinum) để tiết kiệm điện.</p>
                         <p class="author">@huiinguen</p>
                     </div>
-                    <!-- New Knowledge Post 10: Productivity -->
+                    <!-- Knowledge Post 10: Productivity -->
                     <div class="post-card">
                         <h3>Sử dụng Kanban để quản lý dự án cá nhân hiệu quả</h3>
                         <p><b>Kanban</b> là một phương pháp quản lý công việc trực quan, giúp bạn theo dõi tiến độ dự án. Sử dụng các công cụ như <b>Trello</b>, <b>Asana</b>, hoặc thậm chí bảng vật lý với ghi chú dán. Chia công việc thành các cột: <i>Đang làm</i>, <i>Chờ xử lý</i>, <i>Hoàn thành</i>. Giới hạn số lượng nhiệm vụ trong mỗi cột để tránh quá tải. Kiểm tra và cập nhật bảng Kanban hàng ngày để duy trì dòng chảy công việc hiệu quả.</p>
@@ -110,9 +112,94 @@
                         </div>
                         <p>Ra mắt trang web</p>
                         <div class="interactions">
-                            <span class="like-btn" data-likes="0">❤️ 0</span>
+                            <span class="like-btn" data-likes="0">❤️ 43</span>
                             <span class="share-btn">↪️ Chia Sẻ</span>
                             <span class="comment-btn">💬 Bình Luận</span>
+                        </div>
+                    </div>
+                    <div class="announcement-card">
+                        <div class="announcement-header">
+                            <img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&auto=format&fit=crop&w=40&h=40&q=80" alt="Avatar" class="avatar">
+                            <div class="user-info">
+                                <span class="username">@huiinguen</span>
+                                <span class="date">29/04/2025</span>
+                            </div>
+                        </div>
+                        <p>cập nhật bổ sung</p>
+                        <div class="interactions">
+                            <span class="like-btn" data-likes="0">❤️ 13</span>
+                            <span class="share-btn">↪️ Chia Sẻ</span>
+                            <span class="comment-btn">💬 Bình Luận</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="work" style="display: none;">
+                <div class="work-grid">
+                    <!-- Work Post 1 -->
+                    <div class="work-card">
+                        <div class="work-content" style="border: 2px solid #007bff; padding: 15px; border-radius: 10px;">
+                            <h3 style="font-weight: 700; text-align: center; margin-bottom: 10px;">NODEPAY DEPIN</h3>
+                            <p>dự án kiếm tiền dành cho người thích làm việc online,kiếm thưởng dựa trên việc dùng mạng đổi ra điểm </p>
+                            <p><strong>Đường dẫn:</strong> <a href="https://chromewebstore.google.com/detail/nodepay-extension/lgmpfmgeabnnlemejacfljbmonaomfmm" target="_blank">extension</a></p>
+                            <p><strong>Đường dẫn:</strong> <a href="https://app.nodepay.ai/register?ref=O19Z6AdGljyPoR7" target="_blank">link tham gia</a></p>
+                            <p><strong>Note:</strong> dạng crypto</p>
+                            <p class="author">@huiinguen</p>
+                        </div>
+                    </div>
+                    <!-- Work Post 2 -->
+                    <div class="work-card">
+                        <div class="work-content" style="border: 2px solid #007bff; padding: 15px; border-radius: 10px;">
+                            <h3 style="font-weight: 700; text-align: center; margin-bottom: 10px;">BLESS DEPIN</h3>
+                            <p>dự án kiếm tiền dành cho người thích làm việc online,kiếm thưởng dựa trên việc dùng mạng đổi ra điểm </p>
+                            <p><strong>Đường dẫn:</strong> <a href="https://chromewebstore.google.com/detail/bless/pljbjcehnhcnofmkdbjolghdcjnmekia" target="_blank">extension</a></p>
+                            <p><strong>CODE + ĐIỂM:</strong> <a href="https://bless.network_CM/dashboard?ref=7VNWZX" target="_blank">link tham gia</a></p>
+                            <p><strong>Note:</strong> dạng crypto</p>
+                            <p class="author">@huiinguen</p>
+                        </div>
+                    </div>
+                    <!-- Work Post 3 -->
+                    <div class="work-card">
+                        <div class="work-content" style="border: 2px solid #007bff; padding: 15px; border-radius: 10px;">
+                            <h3 style="font-weight: 700; text-align: center; margin-bottom: 10px;">SOLIX DEPIN</h3>
+                            <p>dự án kiếm tiền dành cho người thích làm việc online,kiếm thưởng dựa trên việc dùng mạng đổi ra điểm </p>
+                            <p><strong>Đường dẫn:</strong> <a href="https://chromewebstore.google.com/detail/solix/ocanmekhhffgpiiambnjmlconhhfgolg?authuser=5&hl=vi&pli=1" target="_blank">extension</a></p>
+                            <p><strong>CODE + ĐIỂM:</strong> <a href="https://dashboard.solixdepin.net/sign-up?ref=IdnzH6zp" target="_blank">link tham gia</a></p>
+                            <p><strong>Note:</strong> dạng crypto</p>
+                            <p class="author">@huiinguen</p>
+                        </div>
+                    </div>
+                    <!-- Work Post 4 -->
+                    <div class="work-card">
+                        <div class="work-content" style="border: 2px solid #007bff; padding: 15px; border-radius: 10px;">
+                            <h3 style="font-weight: 700; text-align: center; margin-bottom: 10px;">FLOW3 DEPIN</h3>
+                            <p>dự án kiếm tiền dành cho người thích làm việc online,kiếm thưởng dựa trên việc dùng mạng đổi ra điểm </p>
+                            <p><strong>Đường dẫn:</strong> <a href="https://chromewebstore.google.com/detail/flow3/lhmminnoafalclkgcbokfcngkocoffcp" target="_blank">extension</a></p>
+                            <p><strong>CODE + ĐIỂM:</strong> <a href="https://app.flow3.tech/sale-nodes?ref=sD1uvSbQQ" target="_blank">link tham gia</a></p>
+                            <p><strong>Note:</strong> dạng crypto</p>
+                            <p class="author">@huiinguen</p>
+                        </div>
+                    </div>
+                    <!-- Work Post 5 -->
+                    <div class="work-card">
+                        <div class="work-content" style="border: 2px solid #007bff; padding: 15px; border-radius: 10px;">
+                            <h3 style="font-weight: 700; text-align: center; margin-bottom: 10px;">OPENLOOP DEPIN</h3>
+                            <p>dự án kiếm tiền dành cho người thích làm việc online,kiếm thưởng dựa trên việc dùng mạng đổi ra điểm </p>
+                            <p><strong>Đường dẫn:</strong> <a href="https://chromewebstore.google.com/detail/openloopso-sentry-node-ex/effapmdildnpkiaeghlkicpfflpiambm" target="_blank">extension</a></p>
+                            <p><strong>CODE:</strong> olc59f94b9</p>
+                            <p><strong>Note:</strong> dạng crypto</p>
+                            <p class="author">@huiinguen</p>
+                        </div>
+                    </div>
+                    <!-- Work Post 6 -->
+                    <div class="work-card">
+                        <div class="work-content" style="border: 2px solid #007bff; padding: 15px; border-radius: 10px;">
+                            <h3 style="font-weight: 700; text-align: center; margin-bottom: 10px;">OPENLOOP DEPIN</h3>
+                            <p>dự án kiếm tiền dành cho người thích làm việc online,kiếm thưởng dựa trên việc dùng mạng đổi ra điểm </p>
+                            <p><strong>Đường dẫn:</strong> <a href="https://chromewebstore.google.com/detail/nodegoai-depin-connect/jbmdcnidiaknboflpljihfnbonjgegah" target="_blank">extension</a></p>
+                            <p><strong>Đường dẫn:</strong> <a href="https://app.nodego.ai/r/NODECE54EF27B357" target="_blank">link tham gia</a></p>
+                            <p><strong>Note:</strong> dạng crypto</p>
+                            <p class="author">@huiinguen</p>
                         </div>
                     </div>
                 </div>
@@ -129,5 +216,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
     <script src="scripts.js"></script>
+    <script src="auth-scripts.js"></script>
 </body>
 </html>
