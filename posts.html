@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>huiinguen - Review and Shop</title>
+    <title>Bài Viết - huiinguen</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -14,22 +14,202 @@
             <div class="logo">huiinguen</div>
             <nav>
                 <ul>
-                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
                     <li><a href="products.html" class="nav-link">Products</a></li>
-                    <li><a href="posts.html" class="nav-link">Blog</a></li>
+                    <li><a href="posts.html" class="nav-link active">Blog</a></li>
                     <li><a href="contact.html" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- 3D Blocks Section -->
-    <section class="three-d-section full-page">
-        <canvas id="three-canvas"></canvas>
+    <!-- Posts Section -->
+    <section class="posts full-page">
+        <div class="container">
+            <!-- Tab Navigation -->
+            <div class="tab-nav">
+                <button class="tab-button active" data-tab="knowledge">Kiến Thức <span class="badge" id="knowledge-badge">0</span></button>
+                <button class="tab-button" data-tab="announcements">Thông Báo <span class="badge" id="announcements-badge">0</span></button>
+                <button class="tab-button" data-tab="work">Work <span class="badge" id="work-badge">0</span></button>
+            </div>
+            <!-- Tab Content -->
+            <div class="tab-content" id="knowledge">
+                <div class="post-grid">
+                    <!-- Knowledge Post 1 -->
+                    <div class="post-card">
+                        <h3>Làm thế nào để tối ưu hóa quy trình làm việc của bạn?</h3>
+                        <p>Việc tối ưu hóa quy trình làm việc có thể tăng năng suất đáng kể. Một số mẹo bao gồm: sử dụng các công cụ quản lý thời gian như <b>Trello</b> hoặc <b>Notion</b>, đặt mục tiêu hàng ngày, và loại bỏ các yếu tố gây xao nhãng. Hãy thử kỹ thuật <i>Pomodoro</i> để tập trung tốt hơn.</p>
+                        <p class="author">@huiinguen</p>
+                    </div>
+                    <!-- Knowledge Post 2 -->
+                    <div class="post-card">
+                        <h3>Mẹo lập trình Python hiệu quả là gì?</h3>
+                        <p>Python là một ngôn ngữ lập trình mạnh mẽ và dễ học. Để viết mã hiệu quả, hãy sử dụng <b>List Comprehensions</b> thay vì vòng lặp khi có thể, tận dụng các thư viện như <b>Pandas</b> cho dữ liệu lớn, và luôn <i>ghi chú mã nguồn</i> của bạn.</p>
+                        <p class="author">@huiinguen</p>
+                    </div>
+                    <!-- Knowledge Post 3 -->
+                    <div class="post-card">
+                        <h3>Tại sao bạn nên sử dụng công cụ sao lưu?</h3>
+                        <p>Việc sao lưu dữ liệu là rất quan trọng để bảo vệ thông tin của bạn. Các công cụ như <b>Google Drive</b>, <b>Dropbox</b>, hoặc các tập lệnh Python tự động có thể giúp bạn lưu trữ dữ liệu an toàn. Đừng quên <i>kiểm tra định kỳ</i> các bản sao lưu của bạn!</p>
+                        <p class="author">@huiinguen</p>
+                    </div>
+                    <!-- Knowledge Post 4: Advanced Hardware -->
+                    <div class="post-card">
+                        <h3>Làm thế nào để ép xung CPU an toàn?</h3>
+                        <p><b>Ép xung CPU</b> là cách tăng hiệu suất máy tính, nhưng cần cẩn thận để tránh hư hỏng phần cứng. Trước tiên, hãy đảm bảo hệ thống tản nhiệt của bạn đủ mạnh (như tản nhiệt nước hoặc <i>liquid cooling</i>). Sử dụng phần mềm như <b>MSI Afterburner</b> hoặc vào <i>BIOS</i> để tăng xung nhịp từ từ. Luôn theo dõi nhiệt độ bằng công cụ như <b>HWMonitor</b> – giữ dưới <i>85°C</i> để an toàn. Nếu máy tính không ổn định, hãy giảm xung nhịp ngay lập tức.</p>
+                        <p class="author">@huiinguen</p>
+                    </div>
+                    <!-- Knowledge Post 5: Advanced Hardware -->
+                    <div class="post-card">
+                        <h3>RAID là gì và nên chọn cấu hình RAID nào?</h3>
+                        <p><b>RAID</b> (Redundant Array of Independent Disks) là công nghệ kết hợp nhiều ổ cứng để tăng hiệu suất hoặc độ an toàn dữ liệu. Có nhiều mức RAID: <b>RAID 0</b> tăng tốc độ nhưng không có dự phòng; <b>RAID 1</b> sao chép dữ liệu để đảm bảo an toàn; <b>RAID 5</b> cân bằng giữa tốc độ và an toàn nhưng cần ít nhất 3 ổ cứng. Với người dùng chuyên nghiệp, <i>RAID 5</i> hoặc <i>RAID 10</i> thường được khuyến nghị cho các hệ thống lưu trữ lớn, nhưng hãy đảm bảo có sao lưu ngoài RAID.</p>
+                        <p class="author">@huiinguen</p>
+                    </div>
+                    <!-- Knowledge Post 6: Advanced Software -->
+                    <div class="post-card">
+                        <h3>Làm thế nào để tối ưu hóa hiệu suất Windows 11 cho công việc nặng?</h3>
+                        <p>Để tối ưu hóa <b>Windows 11</b> cho các tác vụ nặng như dựng phim hoặc lập trình, hãy tắt các hiệu ứng không cần thiết: vào <i>Settings > System > Display > Graphics settings</i> và bật <b>Hardware-accelerated GPU scheduling</b>. Ngoài ra, sử dụng <b>Task Manager</b> để tắt các ứng dụng khởi động không cần thiết, và chuyển sang chế độ nguồn <i>High Performance</i> trong <b>Power Options</b>. Nếu làm việc với dữ liệu lớn, hãy cân nhắc tăng bộ nhớ ảo (<i>Virtual Memory</i>) trong cài đặt hệ thống.</p>
+                        <p class="author">@huiinguen</p>
+                    </div>
+                    <!-- Knowledge Post 7: Advanced Software -->
+                    <div class="post-card">
+                        <h3>Docker có thể giúp gì cho việc phát triển phần mềm?</h3>
+                        <p><b>Docker</b> là công cụ tạo môi trường ảo hóa nhẹ (container) để chạy ứng dụng nhất quán trên mọi hệ thống. Với lập trình viên, Docker giúp: <b>đồng bộ môi trường</b> giữa phát triển và sản xuất, giảm lỗi "chạy trên máy tôi thì được"; <b>triển khai nhanh</b> bằng cách đóng gói ứng dụng với các phụ thuộc; và <b>tiết kiệm tài nguyên</b> so với máy ảo truyền thống. Để bắt đầu, cài đặt Docker Desktop và thử chạy một container đơn giản với lệnh: <i>docker run -it ubuntu bash</i>.</p>
+                        <p class="author">@huiinguen</p>
+                    </div>
+                    <!-- Knowledge Post 8: Advanced Software -->
+                    <div class="post-card">
+                        <h3>Làm thế nào để bảo mật ứng dụng web với HTTPS?</h3>
+                        <p>Bảo mật ứng dụng web bằng <b>HTTPS</b> là bước quan trọng để bảo vệ dữ liệu người dùng. Sử dụng chứng chỉ SSL/TLS miễn phí từ <b>Let's Encrypt</b> hoặc các nhà cung cấp như <b>Cloudflare</b>. Để triển khai, cấu hình máy chủ web (như <i>Nginx</i> hoặc <i>Apache</i>) để chuyển hướng tất cả lưu lượng HTTP sang HTTPS. Đảm bảo sử dụng <b>HSTS</b> (HTTP Strict Transport Security) để ép trình duyệt luôn dùng HTTPS. Kiểm tra cấu hình SSL bằng công cụ như <i>SSL Labs</i> để đảm bảo an toàn tối đa.</p>
+                        <p class="author">@huiinguen</p>
+                    </div>
+                    <!-- Knowledge Post 9: Advanced Hardware -->
+                    <div class="post-card">
+                        <h3>Cách chọn nguồn (PSU) phù hợp cho PC của bạn?</h3>
+                        <p>Nguồn máy tính (<b>PSU</b>) là yếu tố quan trọng để đảm bảo hệ thống hoạt động ổn định. Khi chọn PSU, hãy tính tổng công suất tiêu thụ của các linh kiện (CPU, GPU, RAM, ổ cứng) bằng công cụ như <b>PCPartPicker</b>. Chọn nguồn có công suất cao hơn 20-30% so với nhu cầu để đảm bảo hiệu quả và độ bền. Ưu tiên các thương hiệu uy tín như <i>Corsair</i>, <i>Seasonic</i>, hoặc <i>EVGA</i> và kiểm tra chứng nhận <b>80 Plus</b> (Bronze, Gold, Platinum) để tiết kiệm điện.</p>
+                        <p class="author">@huiinguen</p>
+                    </div>
+                    <!-- Knowledge Post 10: Productivity habitantes -->
+                    <div class="post-card">
+                        <h3>Sử dụng Kanban để quản lý dự án cá nhân hiệu quả</h3>
+                        <p><b>Kanban</b> là một phương pháp quản lý công việc trực quan, giúp bạn theo dõi tiến độ dự án. Sử dụng các công cụ như <b>Trello</b>, <b>Asana</b>, hoặc thậm chí bảng vật lý với ghi chú dán. Chia công việc thành các cột: <i>Đang làm</i>, <i>Chờ xử lý</i>, <i>Hoàn thành</i>. Giới hạn số lượng nhiệm vụ trong mỗi cột để tránh quá tải. Kiểm tra và cập nhật bảng Kanban hàng ngày để duy trì dòng chảy công việc hiệu quả.</p>
+                        <p class="author">@huiinguen</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="announcements" style="display: none;">
+                <div class="announcement-grid">
+                    <!-- Announcement 1 -->
+                    <div class="announcement-card">
+                        <div class="announcement-header">
+                            <img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&auto=format&fit=crop&w=40&h=40&q=80" alt="Avatar" class="avatar">
+                            <div class="user-info">
+                                <span class="username">@huiinguen</span>
+                                <span class="date">24/04/2025</span>
+                            </div>
+                        </div>
+                        <p>Ra mắt trang web</p>
+                        <div class="interactions">
+                            <span class="like-btn" data-likes="0">❤️ 43</span>
+                            <span class="share-btn">↪️ Chia Sẻ</span>
+                            <span class="comment-btn">💬 Bình Luận</span>
+                        </div>
+                    </div>
+                    <div class="announcement-card">
+                        <div class="announcement-header">
+                            <img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&auto=format&fit=crop&w=40&h=40&q=80" alt="Avatar" class="avatar">
+                            <div class="user-info">
+                                <span class="username">@huiinguen</span>
+                                <span class="date">29/04/2025</span>
+                            </div>
+                        </div>
+                        <p>Cập nhật giao diện</p>
+                        <div class="interactions">
+                            <span class="like-btn" data-likes="0">❤️ 13</span>
+                            <span class="share-btn">↪️ Chia Sẻ</span>
+                            <span class="comment-btn">💬 Bình Luận</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="work" style="display: none;">
+                <div class="work-grid">
+                    <!-- Work Post 1 -->
+                    <div class="work-card">
+                        <div class="work-content" style="border: 2px solid #007bff; padding: 15px; border-radius: 10px;">
+                            <h3 style="font-weight: 700; text-align: center; margin-bottom: 10px;">NODEPAY DEPIN</h3>
+                            <p>Dự án kiếm tiền dành cho người thích làm việc online, kiếm thưởng dựa trên việc dùng mạng đổi ra điểm </p>
+                            <p><strong>Đường dẫn:</strong> <a href="https://chromewebstore.google.com/detail/nodepay-extension/lgmpfmgeabnnlemejacfljbmonaomfmm" target="_blank">extension</a></p>
+                            <p><strong>Đường dẫn:</strong> <a href="https://app.nodepay.ai/register?ref=O19Z6AdGljyPoR7" target="_blank">link tham gia</a></p>
+                            <p><strong>Note:</strong> dạng crypto</p>
+                            <p class="author">@huiinguen</p>
+                        </div>
+                    </div>
+                    <!-- Work Post 2 -->
+                    <div class="work-card">
+                        <div class="work-content" style="border: 2px solid #007bff; padding: 15px; border-radius: 10px;">
+                            <h3 style="font-weight: 700; text-align: center; margin-bottom: 10px;">BLESS DEPIN</h3>
+                            <p>Dự án kiếm tiền dành cho người thích làm việc online, kiếm thưởng dựa trên việc dùng mạng đổi ra điểm </p>
+                            <p><strong>Đường dẫn:</strong> <a href="https://chromewebstore.google.com/detail/bless/pljbjcehnhcnofmkdbjolghdcjnmekia" target="_blank">extension</a></p>
+                            <p><strong>CODE + ĐIỂM:</strong> <a href="https://bless.network_CM/dashboard?ref=7VNWZX" target="_blank">link tham gia</a></p>
+                            <p><strong>Note:</strong> dạng crypto</p>
+                            <p class="author">@huiinguen</p>
+                        </div>
+                    </div>
+                    <!-- Work Post 3 -->
+                    <div class="work-card">
+                        <div class="work-content" style="border: 2px solid #007bff; padding: 15px; border-radius: 10px;">
+                            <h3 style="font-weight: 700; text-align: center; margin-bottom: 10px;">SOLIX DEPIN</h3>
+                            <p>Dự án kiếm tiền dành cho người thích làm việc online, kiếm thưởng dựa trên việc dùng mạng đổi ra điểm </p>
+                            <p><strong>Đường dẫn:</strong> <a href="https://chromewebstore.google.com/detail/solix/ocanmekhhffgpiiambnjmlconhhfgolg?authuser=5&hl=vi&pli=1" target="_blank">extension</a></p>
+                            <p><strong>CODE + ĐIỂM:</strong> <a href="https://dashboard.solixdepin.net/sign-up?ref=IdnzH6zp" target="_blank">link tham gia</a></p>
+                            <p><strong>Note:</strong> dạng crypto</p>
+                            <p class="author">@huiinguen</p>
+                        </div>
+                    </div>
+                    <!-- Work Post 4 -->
+                    <div class="work-card">
+                        <div class="work-content" style="border: 2px solid #007bff; padding: 15px; border-radius: 10px;">
+                            <h3 style="font-weight: 700; text-align: center; margin-bottom: 10px;">FLOW3 DEPIN</h3>
+                            <p>Dự án kiếm tiền dành cho người thích làm việc online, kiếm thưởng dựa trên việc dùng mạng đổi ra điểm </p>
+                            <p><strong>Đường dẫn:</strong> <a href="https://chromewebstore.google.com/detail/flow3/lhmminnoafalclkgcbokfcngkocoffcp" target="_blank">extension</a></p>
+                            <p><strong>CODE + ĐIỂM:</strong> <a href="https://app.flow3.tech/sale-nodes?ref=sD1uvSbQQ" target="_blank">link tham gia</a></p>
+                            <p><strong>Note:</strong> dạng crypto</p>
+                            <p class="author">@huiinguen</p>
+                        </div>
+                    </div>
+                    <!-- Work Post 5 -->
+                    <div class="work-card">
+                        <div class="work-content" style="border: 2px solid #007bff; padding: 15px; border-radius: 10px;">
+                            <h3 style="font-weight: 700; text-align: center; margin-bottom: 10px;">OPENLOOP DEPIN</h3>
+                            <p>Dự án kiếm tiền dành cho người thích làm việc online, kiếm thưởng dựa trên việc dùng mạng đổi ra điểm </p>
+                            <p><strong>Đường dẫn:</strong> <a href="https://chromewebstore.google.com/detail/openloopso-sentry-node-ex/effapmdildnpkiaeghlkicpfflpiambm" target="_blank">extension</a></p>
+                            <p><strong>CODE:</strong> olc59f94b9</p>
+                            <p><strong>Note:</strong> dạng crypto</p>
+                            <p class="author">@huiinguen</p>
+                        </div>
+                    </div>
+                    <!-- Work Post 6 -->
+                    <div class="work-card">
+                        <div class="work-content" style="border: 2px solid #007bff; padding: 15px; border-radius: 10px;">
+                            <h3 style="font-weight: 700; text-align: center; margin-bottom: 10px;">NODEGO DEPIN</h3>
+                            <p>Dự án kiếm tiền dành cho người thích làm việc online, kiếm thưởng dựa trên việc dùng mạng đổi ra điểm </p>
+                            <p><strong>Đường dẫn:</strong> <a href="https://chromewebstore.google.com/detail/nodegoai-depin-connect/jbmdcnidiaknboflpljihfnbonjgegah" target="_blank">extension</a></p>
+                            <p><strong>Đường dẫn:</strong> <a href="https://app.nodego.ai/r/NODECE54EF27B357" target="_blank">link tham gia</a></p>
+                            <p><strong>Note:</strong> dạng crypto</p>
+                            <p class="author">@huiinguen</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!-- Pagination -->
+                <div class="pagination">
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="scripts.js"></script>
 </body>
 </html>
