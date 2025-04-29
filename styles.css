@@ -15,14 +15,14 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 15px; /* Reduced padding for mobile */
+    padding: 0 15px;
 }
 
 /* Header */
 header {
     background-color: #3c3c3c;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    padding: 15px 0; /* Reduced padding */
+    padding: 15px 0;
     position: fixed;
     width: 100%;
     top: 0;
@@ -30,7 +30,7 @@ header {
 }
 
 header .logo {
-    font-size: 1.5rem; /* Relative unit */
+    font-size: 1.5rem;
     font-weight: 700;
     float: left;
 }
@@ -52,7 +52,7 @@ header nav ul li a {
     text-decoration: none;
     color: #d0d0d0;
     font-weight: 500;
-    font-size: 1rem; /* Relative unit */
+    font-size: 1rem;
     transition: color 0.3s ease;
 }
 
@@ -109,13 +109,14 @@ header nav ul li a:hover {
 
 /* Hero Section */
 .hero {
-    background: url('images/hero-bg.jpg') no-repeat center center/cover;
-    min-height: 100vh; /* Use min-height to prevent overflow */
+    background: linear-gradient(135deg, #007bff, #00c4b4); /* Vibrant gradient */
+    min-height: 100vh;
     display: flex;
     align-items: center;
     text-align: center;
     color: #fff;
     position: relative;
+    overflow: hidden;
 }
 
 .hero::before {
@@ -125,7 +126,8 @@ header nav ul li a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 0;
 }
 
 .hero .container {
@@ -134,38 +136,44 @@ header nav ul li a:hover {
 }
 
 .hero h1 {
-    font-size: 3rem; /* Relative unit */
+    font-size: 3.5rem;
     margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease-out;
 }
 
 .hero p {
-    font-size: 1.25rem; /* Relative unit */
+    font-size: 1.5rem;
     margin-bottom: 2rem;
+    animation: fadeInUp 1.2s ease-out;
 }
 
 .btn {
     display: inline-block;
     padding: 0.75rem 1.5rem;
-    background-color: #007bff;
+    background-color: #ff4444;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
     font-size: 1rem;
-    transition: background-color 0.3s ease;
+    margin: 0 10px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .btn:hover {
-    background-color: #0056b3;
-}
-
-.qr-btn {
-    background-color: #ff4444;
-    border: none;
-    margin-left: 10px;
-}
-
-.qr-btn:hover {
     background-color: #cc0000;
+    transform: scale(1.1);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @media (max-width: 768px) {
@@ -193,18 +201,121 @@ header nav ul li a:hover {
     }
 }
 
-/* Product Section */
-.products {
+/* Features Section */
+.features {
     padding: 80px 0;
     background-color: #3c3c3c;
 }
 
-/* Product Grid */
+.features h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #d0d0d0;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.feature-card {
+    background: linear-gradient(135deg, #4a4a4a, #5e5e5e);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #007bff;
+    animation: pulse 2s infinite;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.feature-card p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #b0b0b0;
+    margin-bottom: 1rem;
+}
+
+.feature-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #28a745;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.feature-btn:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .feature-card p {
+        font-size: 0.875rem;
+    }
+}
+
+/* Footer */
+footer {
+    background-color: #2e2e2e;
+    color: #d0d0d0;
+    text-align: center;
+    padding: 15px 0;
+}
+
+footer p {
+    margin: 5px 0;
+    font-size: 0.875rem;
+}
+
+/* Existing styles from original styles.css */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Reduced min width */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 15px;
-    margin-left: 0; /* Remove fixed margin */
+    margin-left: 0;
     padding: 0 10px;
 }
 
@@ -218,7 +329,7 @@ header nav ul li a:hover {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 200px; /* Reduced max width */
+    max-width: 200px;
     height: auto;
     text-align: center;
     cursor: pointer;
@@ -235,20 +346,19 @@ header nav ul li a:hover {
 }
 
 .product-card h3 {
-    font-size: 0.9rem; /* Relative unit */
+    font-size: 0.9rem;
     margin: 0 0 8px 0;
     color: #d0d0d0;
 }
 
-/* Popup Styling */
 .popup {
     display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 90%; /* Relative width */
-    max-width: 300px; /* Reduced max width */
+    width: 90%;
+    max-width: 300px;
     background: #4a4a4a;
     border-radius: 8px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
@@ -342,7 +452,6 @@ header nav ul li a:hover {
     z-index: 1500;
 }
 
-/* Posts Section */
 .posts {
     padding: 80px 0;
     background-color: #3c3c3c;
@@ -355,11 +464,10 @@ header nav ul li a:hover {
     color: #d0d0d0;
 }
 
-/* Tab Navigation */
 .tab-nav {
-    position: static; /* Remove fixed positioning */
+    position: static;
     display: flex;
-    flex-direction: row; /* Horizontal tabs by default */
+    flex-direction: row;
     justify-content: center;
     gap: 10px;
     margin-bottom: 20px;
@@ -376,7 +484,7 @@ header nav ul li a:hover {
     border-radius: 5px;
     text-align: center;
     transition: background 0.3s ease, color 0.3s ease;
-    position: relative; /* For badge positioning */
+    position: relative;
 }
 
 .tab-button.active, .tab-button:hover {
@@ -384,7 +492,6 @@ header nav ul li a:hover {
     color: #fff;
 }
 
-/* Badge Styling */
 .badge {
     position: absolute;
     top: -8px;
@@ -401,20 +508,18 @@ header nav ul li a:hover {
     font-weight: 700;
 }
 
-/* Tab Content */
 .tab-content {
-    margin-left: 0; /* Remove fixed margin */
+    margin-left: 0;
     padding: 0 10px;
 }
 
-/* Post Grid (Knowledge) */
-.post-grid {
+.post-grid, .work-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Reduced min width */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
 }
 
-.post-card {
+.post-card, .work-card {
     background: #4a4a4a;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
@@ -422,12 +527,12 @@ header nav ul li a:hover {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.post-card:hover {
+.post-card:hover, .work-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.post-card h3 {
+.post-card h3, .work-card h3 {
     font-size: 1.25rem;
     font-weight: 700;
     text-align: center;
@@ -435,21 +540,20 @@ header nav ul li a:hover {
     color: #d0d0d0;
 }
 
-.post-card p {
+.post-card p, .work-card p {
     font-size: 0.875rem;
     line-height: 1.6;
     margin-bottom: 10px;
     color: #b0b0b0;
 }
 
-.post-card .author {
+.post-card .author, .work-card .author {
     font-size: 0.75rem;
     color: #007bff;
     text-align: right;
     font-style: italic;
 }
 
-/* Announcement Grid (Announcements) */
 .announcement-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -528,14 +632,12 @@ header nav ul li a:hover {
     color: #28a745;
 }
 
-/* Full Page Sections */
 .full-page {
-    padding: 80px 0; /* Reduced padding */
+    padding: 80px 0;
     background-color: #3c3c3c;
     min-height: 100vh;
 }
 
-/* Filter Bar (Products Page) */
 .filter-bar {
     margin-bottom: 20px;
     display: flex;
@@ -557,7 +659,6 @@ header nav ul li a:hover {
     color: #b0b0b0;
 }
 
-/* Pagination (Products Page) */
 .pagination {
     text-align: center;
     margin-top: 20px;
@@ -567,7 +668,6 @@ header nav ul li a:hover {
     margin: 0 5px;
 }
 
-/* Review Card (Reviews Page) */
 .review-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -601,7 +701,6 @@ header nav ul li a:hover {
     margin-top: 10px;
 }
 
-/* Contact Grid (Contact Page) */
 .contact-grid {
     display: flex;
     justify-content: center;
@@ -663,44 +762,27 @@ header nav ul li a:hover {
     font-weight: 500;
 }
 
-/* Footer */
-footer {
-    background-color: #2e2e2e;
-    color: #d0d0d0;
-    text-align: center;
-    padding: 15px 0;
-}
-
-footer p {
-    margin: 5px 0;
-    font-size: 0.875rem;
-}
-
-#visit-info {
-    font-size: 0.75rem;
-}
-
 /* Media Queries for Mobile */
 @media (max-width: 768px) {
-    .products, .posts, .full-page {
+    .products, .posts, .full-page, .features {
         padding: 60px 0;
     }
 
-    .product-grid, .post-grid, .announcement-grid, .review-grid {
-        grid-template-columns: 1fr; /* Single column for mobile */
+    .product-grid, .post-grid, .announcement-grid, .work-grid, .review-grid, .feature-grid {
+        grid-template-columns: 1fr;
         gap: 15px;
     }
 
-    .product-card, .post-card, .announcement-card, .review-card {
+    .product-card, .post-card, .announcement-card, .work-card, .review-card, .feature-card {
         max-width: 100%;
         padding: 10px;
     }
 
-    .product-card h3, .post-card h3 {
+    .product-card h3, .post-card h3, .work-card h3, .feature-card h3 {
         font-size: 1rem;
     }
 
-    .post-card p, .announcement-card p {
+    .post-card p, .announcement-card p, .work-card p, .feature-card p {
         font-size: 0.875rem;
     }
 
@@ -739,7 +821,7 @@ footer p {
         padding: 0 10px;
     }
 
-    .posts h2 {
+    .posts h2, .features h2 {
         font-size: 1.5rem;
     }
 
