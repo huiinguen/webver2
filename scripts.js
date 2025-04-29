@@ -224,9 +224,11 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Post tab buttons found");
         const knowledgePosts = document.querySelectorAll('#knowledge .post-card').length;
         const announcements = document.querySelectorAll('#announcements .announcement-card').length;
+        const workPosts = document.querySelectorAll('#work .work-card').length;
 
         document.getElementById('knowledge-badge').textContent = knowledgePosts;
         document.getElementById('announcements-badge').textContent = announcements;
+        document.getElementById('work-badge').textContent = workPosts;
 
         postTabButtons.forEach(button => {
             button.addEventListener('click', () => {
