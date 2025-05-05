@@ -22,6 +22,21 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    // Gmail copy functionality
+    const gmailBlock = document.querySelector('.social-block.gmail');
+    if (gmailBlock) {
+        gmailBlock.addEventListener('click', () => {
+            const email = gmailBlock.getAttribute('data-email');
+            navigator.clipboard.writeText(email).then(() => {
+                const originalText = gmailBlock.querySelector('span').textContent;
+                gmailBlock.querySelector('span').textContent = '✅ Đã sao chép!';
+                setTimeout(() => {
+                    gmailBlock.querySelector('span').textContent = originalText;
+                }, 2000);
+            });
+        });
+    }
+
     // Three.js setup for 3D blocks in index.html
     const canvas = document.querySelector('#three-canvas');
     if (canvas && typeof THREE !== 'undefined') {
@@ -172,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
         productCards.forEach(card => {
             card.addEventListener('click', () => {
                 popupTitle.textContent = card.querySelector('h3').textContent;
-                popupNote.textContent = card.getAttribute('data-note');
+                popupNote.innerHTML = card.getAttribute('data-note');
                 popupRedirect.setAttribute('href', card.getAttribute('data-link'));
                 popup.style.display = 'block';
                 overlay.style.display = 'block';
