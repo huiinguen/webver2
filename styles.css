@@ -227,7 +227,7 @@ nav ul li {
     background: #4a4a4a;
     padding: 15px;
     border-radius: 8px;
-    text-align: center;
+    text-align: left;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
     position: relative;
 }
@@ -397,6 +397,7 @@ nav ul li {
     font-size: 0.95rem;
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
 .social-block:hover {
@@ -418,6 +419,10 @@ nav ul li {
 
 .telegram:hover {
     background-color: #0088cc;
+}
+
+.gmail:hover {
+    background-color: #d93025;
 }
 
 /* Responsive cho điện thoại */
