@@ -1,357 +1,154 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // Hamburger menu toggle
-    const hamburger = document.querySelector('.hamburger');
-    const nav = document.querySelector('nav');
-    if (hamburger) {
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            nav.classList.toggle('active');
-        });
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - huiinguen</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap&font-display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">huiinguen</div>
+            <button class="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="products.html" class="nav-link active">Products</a></li>
+                    <li><a href="posts.html" class="nav-link">Blog</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    // Xử lý active cho thanh điều hướng
-    const navLinks = document.querySelectorAll('.nav-link');
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    <!-- Products Section -->
+    <section class="products full-page">
+        <div class="container">
+            <!-- Tab Navigation -->
+            <div class="tab-nav">
+                <button class="tab-button active" data-tab="tech">Tech</button>
+                <button class="tab-button" data-tab="tips">Tips</button>
+            </div>
+            <!-- Filter Bar -->
+            <div class="filter-bar">
+                <input type="text" id="search" placeholder="Search products...">
+            </div>
+            <!-- Product Grid -->
+            <div class="product-grid">
+                <!-- Tech Products -->
+                <div class="product-card" data-category="tech" data-note="spam chữ" data-link="https://drive.google.com/drive/folders/1JrxjCwjgJCxy3_akJuGmqfIrZaqx5Dz0?usp=drive_link">
+                    <div class="content-wrapper">
+                        <h3>Tool SPAM TEXT</h3>
+                    </div>
+                </div>
+                <div class="product-card" data-category="tech" data-note="tiktok,fb" data-link="https://drive.google.com/drive/folders/1-bHlCbRAO1XG_6c6vS4MQ6z60yi8IyNF?usp=drive_link">
+                    <div class="content-wrapper">
+                        <h3>Tool tds(fb,tt)</h3>
+                    </div>
+                </div>
+                <div class="product-card" data-category="tech" data-note="backup data ổ cứng" data-link="https://drive.google.com/drive/folders/15u8ZHf4egcnAunZcOtgoKM4gO2zyVW3y?usp=drive_link">
+                    <div class="content-wrapper">
+                        <h3>Tool backup data</h3>
+                    </div>
+                </div>
+                <div class="product-card" data-category="tech" data-note="Tool crask win,office,...(gia hạn thời gian)" data-link="https://drive.google.com/drive/folders/1Nk4DY89mZtQi4B_bqgAzcdxNFzrjN3zx?usp=drive_link">
+                    <div class="content-wrapper">
+                        <h3>Crask win,office</h3>
+                    </div>
+                </div>
+                <div class="product-card" data-category="tech" data-note="Tool crask win,office,...(gia hạn thời gian)" data-link="https://drive.google.com/drive/folders/1bPpUma7zNDFykVr41ySfKEvip_9yshEj?usp=drive_link">
+                    <div class="content-wrapper">
+                        <h3>Explorer trong suốt</h3>
+                    </div>
+                </div>
+                <!-- Tips Products -->
+                <div class="product-card" data-category="tips"  data-link="https://raw.githubusercontent.com/hvbstar/coderhvb/main/Locket_Gold_HVB.sgmodule">
+                    <div class="content-wrapper">
+                        <h3>locket gold link1</h3>
+                    </div>
+                </div>
+                <div class="product-card" data-category="tips"  data-link="https://raw.githubusercontent.com/vuong2023/shad/main/modules/Locket_ohb.sgmodule">
+                    <div class="content-wrapper">
+                        <h3>locket gold link2</h3>
+                    </div>
+                </div>
+                <div class="product-card" data-category="tips" data-link="https://idapple.csadata4g.me/">
+                    <div class="content-wrapper">
+                        <h3>Tải shadowroket</h3>
+                    </div>
+                </div>
+                <div class="product-card" data-category="tips"  data-link="https://raw.githubusercontent.com/quocchienn/YouTubePIP/refs/heads/YouTube%2B%2B/YouTubefix3.conf">
+                    <div class="content-wrapper">
+                        <h3>module youtube premium</h3>
+                    </div>
+                </div>
+                <div class="product-card" data-category="tips" data-link="https://raw.githubusercontent.com/vuong2023/shad/main/modules/Locket_ohb.sgmodule">
+                    <div class="content-wrapper">
+                        <h3>link youtube premium</h3>
+                    </div>
+                </div>
+                <div class="product-card" data-category="tips" data-note="Đăng nhập = mail." data-link="https://anotepad.com/notes/hd429qhr?fbclid=IwY2xjawJDlNlleHRuA2FlbQIxMAABHa2pjTr6kz2r3-qgjfjwY5Scm4hiAzUO7Xm5FwaGq6VQsXSmDFlj-noYNQ_aem_1AIDuoJHHRMj0A5l85qpZQ">
+                    <div class="content-wrapper">
+                        <h3>capcut pro random</h3>
+                    </div>
+                </div>
+                <div class="product-card" data-category="tips" data-note="Đăng nhập = mail" data-link="https://anotepad.com/notes/7em5tqwn?utm_source=zalo&utm_medium=zalo&utm_campaign=zalo&fbclid=IwY2xjawJDm7NleHRuA2FlbQIxMAABHboLQTBu9IfIkLwXmmwYMDseyfvuAmj6pVKYX2CljJUyHKzyH8LGQ_eNkg_aem_rIHcSPleZ7C61JLrO9mMaQ">
+                    <div class="content-wrapper">
+                        <h3>capcut pro random 2</h3>
+                    </div>
+                </div>
+                <div class="product-card" data-category="tips" data-note="copy link dán vô shadow" data-link="#">
+                    <div class="content-wrapper">
+                        <h3>spotify</h3>
+                    </div>
+                </div>
+                <div class="product-card" data-category="tips" data-link="#">
+                    <div class="content-wrapper">
+                        <h3>soundcloud</h3>
+                    </div>
+                </div>
+                <div class="product-card" data-category="tips" data-note="B1: Xóa Locket, tải VPNify<br>B2: Cài đặt VPN, bật server USA<br>B3: Tải Locket và hack kiểu Shadowrocket<br>B4: Chờ 10→30p test lại thấy quay 15s thì OK<br><strong>Note:</strong> Tắt VPN sẽ mất 15s, gây hao pin. Bật lại VPN thì chờ 30→1h để có lại 15s" data-link="https://raw.githubusercontent.com/vuong2023/shad/main/modules/Locket_ohb.sgmodule">
+                    <div class="content-wrapper">
+                        <h3>Locket Gold 15s</h3>
+                    </div>
+                </div>
+                <div class="product-card" data-category="tips" data-note="copy link dán vô shadow" data-link="https://raw.githubusercontent.com/quocchienn/Make/refs/heads/crack/ALL_Lucky_VP3.modules">
+                    <div class="content-wrapper">
+                        <h3>module tổng hợp: yt,locket,spotify,...</h3>
+                    </div>
+                </div>
+                <div class="product-card" data-category="tips" data-note="tải config về " data-link="https://drive.google.com/drive/u/0/folders/1wnL7vENbeRKW1bAP97WEZvaDyfzfglof">
+                    <div class="content-wrapper">
+                        <h3>unlock app shadowrocket</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="pagination">
+            </div>
+        </div>
+        <!-- Popup -->
+        <div class="popup" id="product-popup">
+            <div class="popup-content">
+                <span class="close-popup" id="close-popup">×</span>
+                <h3 id="popup-title"></h3>
+                <p id="popup-note"></p>
+                <div class="popup-actions">
+                    <button class="popup-copy-btn" id="popup-copy">📋 Copy Link</button>
+                    <a class="popup-redirect-btn" id="popup-redirect" href="#" target="_blank">🔗 Redirect</a>
+                </div>
+            </div>
+        </div>
+        <div class="overlay" id="overlay"></div>
+    </section>
 
-    navLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        if (href === currentPage) {
-            link.classList.add('active');
-        } else {
-            link.classList.remove('active');
-        }
-    });
-
-    // Gmail copy functionality
-    const gmailBlock = document.querySelector('.social-block.gmail');
-    if (gmailBlock) {
-        gmailBlock.addEventListener('click', () => {
-            const email = gmailBlock.getAttribute('data-email');
-            navigator.clipboard.writeText(email).then(() => {
-                const originalText = gmailBlock.querySelector('span').textContent;
-                gmailBlock.querySelector('span').textContent = '✅ Đã sao chép!';
-                setTimeout(() => {
-                    gmailBlock.querySelector('span').textContent = originalText;
-                }, 2000);
-            });
-        });
-    }
-
-    // Three.js setup for 3D blocks in index.html
-    const canvas = document.querySelector('#three-canvas');
-    if (canvas && typeof THREE !== 'undefined') {
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
-        renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-        // Resize canvas on window resize
-        window.addEventListener('resize', () => {
-            camera.aspect = canvas.clientWidth / canvas.clientHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-        });
-
-        // Lighting
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-        scene.add(ambientLight);
-        const pointLight = new THREE.PointLight(0xffffff, 1);
-        pointLight.position.set(10, 10, 10);
-        scene.add(pointLight);
-
-        // Create cubes
-        const cubes = [];
-        const cubeCount = 30;
-        const cubeSize = 0.7;
-        const cubeGeometry = new THREE.BoxGeometry(cubeSize, cubeSize, cubeSize);
-
-        for (let i = 0; i < cubeCount; i++) {
-            const material = new THREE.MeshPhongMaterial({
-                color: new THREE.Color(`hsl(${Math.random() * 360}, 70%, 50%)`),
-                shininess: 100
-            });
-            const cube = new THREE.Mesh(cubeGeometry, material);
-            cube.position.set(
-                (Math.random() - 0.5) * 15,
-                (Math.random() - 0.5) * 15,
-                (Math.random() - 0.5) * 15
-            );
-            cube.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
-            scene.add(cube);
-            cubes.push(cube);
-        }
-
-        // Target positions for sphere
-        const radius = 3;
-        const targetPositions = [];
-        for (let i = 0; i < cubeCount; i++) {
-            const phi = Math.acos(-1 + (2 * i) / cubeCount);
-            const theta = Math.sqrt(cubeCount * Math.PI) * phi;
-            const x = radius * Math.cos(theta) * Math.sin(phi);
-            const y = radius * Math.sin(theta) * Math.sin(phi);
-            const z = radius * Math.cos(phi);
-            targetPositions.push([x, y, z]);
-        }
-
-        // Animation with IntersectionObserver for performance
-        let time = 0;
-        let isAnimating = true;
-        function animate() {
-            if (!isAnimating) return;
-            requestAnimationFrame(animate);
-            time += 0.02;
-
-            cubes.forEach((cube, i) => {
-                if (time < 7) {
-                    const target = targetPositions[i % targetPositions.length];
-                    cube.position.lerp(new THREE.Vector3(...target), 0.05);
-                    cube.rotation.x += 0.02;
-                    cube.rotation.y += 0.02;
-                } else {
-                    cube.position.applyAxisAngle(new THREE.Vector3(0, 1, 0), 0.01);
-                    cube.rotation.x += 0.01;
-                    cube.rotation.y += 0.01;
-                    cube.material.color.setHSL((Math.sin(time * 0.1 + i) + 1) / 2, 0.7, 0.5);
-                }
-            });
-
-            camera.position.z = 10;
-            renderer.render(scene, camera);
-        }
-
-        // Pause animation when canvas is out of view
-        const observer = new IntersectionObserver((entries) => {
-            isAnimating = entries[0].isIntersecting;
-            if (isAnimating) animate();
-        }, { threshold: 0 });
-        observer.observe(canvas);
-
-        animate();
-    }
-
-    // Tab functionality for products
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const productCards = document.querySelectorAll('.product-card');
-    const searchInput = document.querySelector('#search');
-
-    if (tabButtons.length > 0) {
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-
-                const tab = button.getAttribute('data-tab');
-                productCards.forEach(card => {
-                    const category = card.getAttribute('data-category');
-                    if (tab === category) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // Trigger default filter (tech) on page load
-        const defaultTabButton = document.querySelector('.tab-button[data-tab="tech"]');
-        if (defaultTabButton) {
-            defaultTabButton.click();
-        }
-    }
-
-    if (searchInput) {
-        searchInput.addEventListener('input', () => {
-            const searchTerm = searchInput.value.toLowerCase();
-            productCards.forEach(card => {
-                const title = card.querySelector('h3').textContent.toLowerCase();
-                if (title.includes(searchTerm)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    }
-
-    // Popup functionality for products
-    const popup = document.querySelector('#product-popup');
-    const popupTitle = document.querySelector('#popup-title');
-    const popupNote = document.querySelector('#popup-note');
-    const popupRedirect = document.querySelector('#popup-redirect');
-    const popupCopy = document.querySelector('#popup-copy');
-    const closePopup = document.querySelector('#close-popup');
-    const overlay = document.querySelector('#overlay');
-
-    if (productCards.length > 0) {
-        productCards.forEach(card => {
-            card.addEventListener('click', () => {
-                popupTitle.textContent = card.querySelector('h3').textContent;
-                popupNote.innerHTML = card.getAttribute('data-note');
-                popupRedirect.setAttribute('href', card.getAttribute('data-link'));
-                popup.style.display = 'block';
-                overlay.style.display = 'block';
-            });
-        });
-    }
-
-    if (popupCopy) {
-        popupCopy.addEventListener('click', () => {
-            const link = popupRedirect.getAttribute('href');
-            navigator.clipboard.writeText(link).then(() => {
-                popupCopy.textContent = '✅ Đã sao chép!';
-                setTimeout(() => {
-                    popupCopy.textContent = '📋 Copy Link';
-                }, 2000);
-            });
-        });
-    }
-
-    if (closePopup && overlay) {
-        closePopup.addEventListener('click', () => {
-            popup.style.display = 'none';
-            overlay.style.display = 'none';
-        });
-
-        overlay.addEventListener('click', () => {
-            popup.style.display = 'none';
-            overlay.style.display = 'none';
-        });
-    }
-
-    // Tab functionality for posts
-    const postTabButtons = document.querySelectorAll('.posts .tab-button');
-    const tabContents = document.querySelectorAll('.tab-content');
-    const knowledgeBadge = document.querySelector('#knowledge-badge');
-    const workBadge = document.querySelector('#work-badge');
-    const reviewsBadge = document.querySelector('#reviews-badge');
-    const postSearchInput = document.querySelector('#post-search');
-    const postCards = document.querySelectorAll('.post-card');
-    const reviewCards = document.querySelectorAll('.review-card');
-    const reviewFilterSelect = document.querySelector('#review-filter-select');
-    const reviewFilterDropdown = document.querySelector('.review-filter-dropdown');
-
-    if (postTabButtons.length > 0) {
-        postTabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                postTabButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-
-                const tab = button.getAttribute('data-tab');
-                tabContents.forEach(content => {
-                    content.style.display = content.id === tab ? 'block' : 'none';
-                });
-
-                // Show/hide review filter dropdown and reset search
-                if (reviewFilterDropdown) {
-                    reviewFilterDropdown.style.display = tab === 'reviews' ? 'block' : 'none';
-                }
-
-                // Reset search filter and trigger default review filter when switching to reviews tab
-                if (postSearchInput) {
-                    postSearchInput.value = '';
-                    postCards.forEach(card => {
-                        card.style.display = 'block';
-                    });
-                    reviewCards.forEach(card => {
-                        card.style.display = 'none';
-                    });
-                    if (tab === 'reviews' && reviewFilterSelect) {
-                        reviewFilterSelect.value = 'photo';
-                        reviewFilterSelect.dispatchEvent(new Event('change'));
-                    }
-                }
-            });
-        });
-
-        // Update badge counts
-        if (knowledgeBadge) knowledgeBadge.textContent = document.querySelectorAll('#knowledge .post-card').length;
-        if (workBadge) workBadge.textContent = document.querySelectorAll('#work .work-card').length;
-        if (reviewsBadge) reviewsBadge.textContent = document.querySelectorAll('#reviews .review-card').length;
-    }
-
-    // Post search functionality
-    if (postSearchInput) {
-        postSearchInput.addEventListener('input', () => {
-            const searchTerm = postSearchInput.value.toLowerCase();
-            postCards.forEach(card => {
-                const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
-                const content = card.querySelector('p')?.textContent.toLowerCase() || '';
-                if (title.includes(searchTerm) || content.includes(searchTerm)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-            reviewCards.forEach(card => {
-                const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
-                const content = card.querySelector('p')?.textContent.toLowerCase() || '';
-                if (title.includes(searchTerm) || content.includes(searchTerm)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    }
-
-    // Review filter functionality with dropdown
-    if (reviewFilterSelect) {
-        reviewFilterSelect.addEventListener('change', () => {
-            const filter = reviewFilterSelect.value;
-            reviewCards.forEach(card => {
-                const category = card.getAttribute('data-category');
-                if (filter === category) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    }
-
-    // Popup functionality for reviews
-    const reviewPopup = document.querySelector('#review-popup');
-    const reviewPopupTitle = document.querySelector('#review-popup-title');
-    const reviewPopupNote = document.querySelector('#review-popup-note');
-    const reviewPopupRedirect = document.querySelector('#review-popup-redirect');
-    const reviewPopupCopy = document.querySelector('#review-popup-copy');
-    const closeReviewPopup = document.querySelector('#close-review-popup');
-    const reviewOverlay = document.querySelector('#review-overlay');
-
-    if (reviewCards.length > 0) {
-        reviewCards.forEach(card => {
-            card.addEventListener('click', () => {
-                reviewPopupTitle.textContent = card.querySelector('h3').textContent;
-                reviewPopupNote.textContent = card.getAttribute('data-note');
-                reviewPopupRedirect.setAttribute('href', card.getAttribute('data-link'));
-                reviewPopup.style.display = 'block';
-                reviewOverlay.style.display = 'block';
-            });
-        });
-    }
-
-    if (reviewPopupCopy) {
-        reviewPopupCopy.addEventListener('click', () => {
-            const link = reviewPopupRedirect.getAttribute('href');
-            navigator.clipboard.writeText(link).then(() => {
-                reviewPopupCopy.textContent = '✅ Đã sao chép!';
-                setTimeout(() => {
-                    reviewPopupCopy.textContent = '📋 Copy Link';
-                }, 2000);
-            });
-        });
-    }
-
-    if (closeReviewPopup && reviewOverlay) {
-        closeReviewPopup.addEventListener('click', () => {
-            reviewPopup.style.display = 'none';
-            reviewOverlay.style.display = 'none';
-        });
-
-        reviewOverlay.addEventListener('click', () => {
-            reviewPopup.style.display = 'none';
-            reviewOverlay.style.display = 'none';
-        });
-    }
-});
+    <!-- Scripts -->
+    <script src="scripts.js" defer></script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93af0fa12a14b08b',t:'MTc0NjQzNTc2OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
